@@ -10041,8 +10041,10 @@ class Parte(models.Model):
 	objects = models.Manager()
 
 	def __str__(self):
-		return self.Iniciais
-
+		try:
+			return str(self.Iniciais)
+		except:
+			return 'None'
 
 class Secao(models.Model):
 	

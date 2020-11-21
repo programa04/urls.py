@@ -19,35 +19,41 @@
 
 					<div class="row">
 						<div class="d-flex align-items-center ml-3">
-                            {% render_field parte.TipoPronomeTratamento style=style %}
-						</div>
+                                <label style="">Pronome</label>
+                            <select id="PronSelect" class="form-control" name="TipoPronomeTratamento"></select>
+                        </div>
                         <div class="col">
                             {% render_field parte.Iniciais style=style %}
                         </div>
-						<div class="col">
-							{% render_field users.first_name style=style %}
+
+                        <div class="col-4">
+
+                                <label >Primeiro nome</label>
+                             <input name="first_name" class="form-control" type="text"  value="" >
+
 						</div>
 					</div>
 
                     <div class="">
-                        {% render_field users.last_name style=style %}
+                           <label >Último nome</label>
+                              <input name="last_name" class="form-control" type="text"  value="" >
                     </div>
 
                     <div class="">
+                    <label>País</label>
                         <select class="form-control" name="Pais">
+                            <option value="" selected disabled>Selecionar...</option>
                             {% for dado in pais %}
                                 <option value="{{ dado.id }}">{{ dado.Nome }}</option>
                             {% endfor %}
 						</select>
-						{% for dado in pais %}
-							{{dado.PaisBancoImagem}}
-                        {% endfor %}
-
 
 					</div>
                     <div class="">
-                       {% render_field parte.DataNascimento style=style %}
-                    </div>
+                        <label >Data de Nascimento</label>
+                        <input name="DataNascimento" class="form-control" type="date"  value="" >
+
+                      </div>
 
 					<div class="row" id="id_alerta">
 						<div class="ml-3 my-auto">

@@ -224,10 +224,36 @@ class CadastroView(APIView):
 
 	def post(self, request, format=None):
 
+		print('request.POST')
+		print(request.POST)
+		print('user')
 		serializer = UserSerializer(data=request.POST)
+		print('Parte')
 		parteserializer = ParteSerializer(data=request.POST)
+		print('Contato')
 		contato = ContatoSerializer(data=request.POST)
+		print('segurança')
 		seguranca = SegurancaSerializer(data=request.POST)
+
+		try:
+			print(serializer.is_valid())
+		except:
+			print('user')
+
+		try:
+			print(parteserializer.is_valid())
+		except:
+			print('Parte')
+
+		try:
+			print(contato.is_valid())
+		except:
+			print('Contato')
+
+		try:
+			seguranca.is_valid()
+		except:
+			print('segurança')
 
 		if serializer.is_valid() and parteserializer.is_valid() and contato.is_valid() and seguranca.is_valid():
 			serializer.save()
@@ -235,9 +261,12 @@ class CadastroView(APIView):
 			contato.save()
 			seguranca.save()
 
-			return Response({'serializer': serializer}, status=status.HTTP_201_CREATED)
+			print('funcionou')
+			return Response('Funcionou', status=status.HTTP_201_CREATED)
 		else:
-			return Response({'serializer': serializer}, status=status.HTTP_400_BAD_REQUEST)
+			print('não funcionou')
+
+			return Response('nãofuncionou', status=status.HTTP_400_BAD_REQUEST)
 
 
 class CadastroLinguasView(TemplateView):
