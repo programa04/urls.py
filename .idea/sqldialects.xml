@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://S:/instantprod_TipoDataCom.sql" dialect="PostgreSQL" />
+    <file url="file://S:/instantprod_TipoDataComAssu.sql" dialect="PostgreSQL" />
+    <file url="file://S:/instantprod_TipoDataComDetl.sql" dialect="PostgreSQL" />
+  </component>
+</project>
