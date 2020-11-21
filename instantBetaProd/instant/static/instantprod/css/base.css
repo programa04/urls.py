@@ -1,0 +1,514 @@
+html{
+    height: 100%;
+}
+
+body {
+    background-color: #008C88;
+    color: white;
+}
+
+@font-face {
+    font-family: MyriadPro;
+    src: url('../../fonts/myriadpro.ttf') format('truetype');
+} 
+
+@font-face {
+    font-family: DilleniaUPC;
+    src: url('../../fonts/upcdb.ttf') format('truetype');
+} 
+
+select{
+    color: white;
+    background-color: #00635F;
+    text-align: center;
+    border: 0.6px solid #00bfba;
+    padding: 3.2px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.clearfix:before, .clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+h1, p{
+    font-family: MyriadPro;
+    align-self: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.locale{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    padding-top: 1px;
+    padding-bottom: 5.12px;
+}
+
+.locale_busca{
+    display: inline-block;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    padding-top: 1px;
+    padding-bottom: 5.12px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.locale_fundo{
+    background-color: #00635F;
+    width: 100%;
+    height: 33.6px;
+    overflow-y: scroll;
+    align-items: center;
+}
+
+/* width */
+.locale_fundo::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+
+/* Track */
+.locale_fundo::-webkit-scrollbar-track {
+    background: #00635F; 
+}
+
+/* Handle */
+.locale_fundo::-webkit-scrollbar-thumb {
+    background: #00635F; 
+}
+
+/* Handle on hover */
+.locale_fundo::-webkit-scrollbar-thumb:hover {
+    background: #00635F; 
+}
+
+.locale_link{
+    font-family: MyriadPro;
+    font-size: 1em;
+    color: #00bfba;
+    text-decoration: none;
+    text-align: center;
+    align-items: center;
+}
+
+.locale_link:hover{
+    color: #008C88;
+}
+
+.locale_selecionado{
+    font-family: MyriadPro;
+    font-size: 1em;
+    color: #FFFFFF;
+    text-decoration: none;
+    text-align: center;
+    align-items: center;
+}
+
+.locale_selecionado:hover{
+    color: #008C88;
+}
+
+.bandeiras{
+    float: none;
+    width: 28px; 
+    height: 24px; 
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 1.6px;
+}
+
+.footer_fundo{
+    background-image: url('../img/oie_transparent.png');
+    background-size: 50% 110%;
+    background-repeat: repeat;
+    background-color: #00635F;
+}
+
+.footer {
+    position:absolute;
+    bottom:0;
+    width:100%;
+}
+
+.logo{
+    width: 80%;
+    display: block;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 16px;
+    display: none;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #008C88; 
+    display: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+.redes_sociais{
+    display: inline-block;
+    width: 32px;
+    margin-left: 4px;
+    margin-right: auto;
+}
+
+#botao_busca{
+    height: 24px;
+    width: 80%;
+    margin-top: 4.8px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#caixa_info{
+    color: #00bfba;
+    background-color:  #00635F;
+    border: 1.6px solid  #00bfba;
+}
+
+.traducao{
+    font-family: DilleniaUPC;
+    font-weight: bold;
+    font-size: 2.1em;
+}
+
+.form-signin{
+    width: 85%;
+}
+
+#documents{
+    display: inline;
+}
+
+#submit_button_join{
+    width: 136px;
+}
+
+#submit_button_join:disabled{
+    color: #6D6E70;
+    background-color:  #00bfba; 
+    border: 0.6px solid  #6D6E70;
+}
+
+#submit_button_join:enabled{
+    color: #FFFFFF;
+    background-color:  #00635F; 
+    border: 0.6px solid  #FFFFFF;
+}
+
+#aviso_form{
+    color: #00bfba;
+    background-color: #00635F;
+    border: 0.6px solid  #00bfba;
+}
+
+#aviso{
+    color: #00bfba;
+    background-color:  #00635F; 
+    border: 0.6px solid  #00bfba;
+}
+
+.Mpro{
+    font-family: MyriadPro;
+}
+
+.Dillenia{
+    font-family: DilleniaUPC;
+}
+
+.tamanho_08em{
+    font-size: 0.8em;
+}
+
+.tamanho_07em{
+    font-size: 0.7em;
+}
+
+.tamanho_06em{
+    font-size: 0.6em;
+}
+
+.tamanho_05em{
+    font-size: 0.5em;
+}
+
+.tamanho_04em{
+    font-size: 0.4em;
+}
+
+.link{
+    display: block;
+    position: relative;
+    font-family: MyriadPro;
+    color: #00bfba;
+    -webkit-text-decoration-line: underline; /* Safari */
+    text-decoration-line: underline; 
+    width: 100%;
+    text-align: center;
+}
+
+.link:hover{
+    color: #008C88;
+}
+
+.img-contato{
+    width: 51.2px;
+}
+
+.links_linha_vertical{
+    display: none;
+}
+
+.links_linha_horizontal{
+    width: 100%;
+    height: 0.16px;
+}
+
+.tam_footer_img{
+    width: 10%;
+    overflow: initial;
+    margin-left: 43.2px;
+}
+
+.section_redes{
+    width: 65%;
+}
+
+.tam_footer_num{
+    position: absolute;
+    width: auto;
+    margin-left: 99.2px;
+}
+
+.sumir_mobile{
+    display: none;
+}
+
+.mobile-100{
+    width: 100%;
+}
+
+.mobile-45{
+    width: 45%;
+}
+
+.input_codigo{
+    display: inline-block;
+}
+
+.dropcolor{
+    color: white;
+    border: 1.6px solid #00bfba;
+    background-color: #00635F;
+    text-align: left;
+}
+
+.country_code{
+    width: 100%;
+    text-align: left;
+    padding-left: 3.2px;
+}
+
+.country_code:hover{
+    border: 1.6px solid #00bfba;
+}
+
+.beta{
+    position: absolute;	
+    top: 63%;
+    left: 78%;		
+}
+
+@media screen and (min-width: 750px) {
+
+    .beta{
+        position: absolute;	
+        top: 63%;
+        left: 57.5%;		
+    }
+
+    .scroll_country_code{
+        overflow-y: scroll;
+        width: 264px;
+        height: 128px;
+    }
+
+    .redes_sociais{
+        display: inline-block;
+        width: 32px;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .section_redes{
+        width: 100%;
+    }
+
+    .mobile-100{
+        width: 23%;
+    }
+
+    .mobile-45{
+        width: auto;
+    }
+
+    ::-webkit-scrollbar {
+        width: 8px;
+        display:flex;
+    }
+    
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #008C88; 
+        display: flex;
+    }
+
+    .link{
+        display: inline-block;
+        font-family: MyriadPro;
+        color: #00bfba;
+        -webkit-text-decoration-line: underline; /* Safari */
+        text-decoration-line: underline; 
+        margin-left: 1.6px;
+        margin-right: 1.6px;
+        text-align: start;
+    }	
+
+    .sumir_mobile{
+        display: inherit;
+    }
+
+    .img-contato{
+        width: 51.2px;
+    }	
+
+    .logo{
+        width: 20%;
+        display: block;
+    }
+
+    .tam_footer_img{
+        width: 51.2px;
+        height: 51.2px;
+        margin-left: 1.6px;
+    }
+
+    .tam_footer_num{
+        position: relative;
+        height:100%;
+        width: 160px;
+        margin-left: 16px;
+    }
+
+    .links_linha_vertical{
+        display: block;
+        width: 0.16px;
+        height: 64px;
+        opacity: 0.4;
+        background-color: #00bfba;
+    }
+
+    .links_linha_horizontal{
+        width: 100%;
+        height: 0.16px;
+    }
+
+    #botao_busca{
+        height: 1.5em;
+        width: 5%;
+        margin-top: 4.8px;
+    }
+
+    .form-signin{
+        width: 464px;
+    }
+
+    .bandeiras{
+        float: none;
+        width: 20.8px; 
+        height: 12px; 
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+    .locale{
+        display:inline;
+        text-align: left;
+        align-items: normal;
+        padding-top: 3.2px;
+        padding-bottom: 3.2px;
+    }
+
+    .locale_busca{
+        display:inline;
+        text-align: left;
+        align-items: normal;
+        padding-top: 3.2px;
+        padding-bottom: 3.2px;
+    }
+
+    .locale_fundo{
+        background-color: #00635F;
+        width: 100%;  
+        white-space: nowrap;  
+        overflow-x: auto;
+        overflow-y: hidden;  
+        align-items: flex-start;
+    }
+
+    .locale_link{
+        font-size: 11.76px;
+        font-family: MyriadPro;
+        color: #00bfba;
+        text-decoration: none;
+        text-align: center;
+        align-items: center;
+        padding-left: 3.2px;
+        padding-right: 3.2px;
+        padding-top: 3.2px;
+        padding-bottom: 3.2px;
+    }
+
+    .locale_selecionado{
+        font-size: 11.76px;
+        font-family: MyriadPro;
+        color: #FFFFFF;
+        text-decoration: none;
+        text-align: center;
+        align-items: center;
+        padding-left: 3.2px;
+        padding-right: 3.2px;
+        padding-top: 3.2px;
+        padding-bottom: 3.2px;
+    } 
+
+} 

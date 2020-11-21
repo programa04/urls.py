@@ -1,0 +1,306 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% load l10n %}
+{% load rest_framework %}
+
+{% block title %} Cadastro {% endblock %}
+{% block head %}
+	
+{% endblock %}
+
+{% block content %}
+	<div class="container-fluid"> 
+		<div class="mx-auto Cadastro Mpro">
+            <h1 class="h3 mx-auto font-weight-normal text-center py-3">{% trans 'Account opening' %}</h1>
+			<div class="mx-auto container-fluid">
+				<form class="form-signin mx-auto text-center avalidar" method="POST" action="">
+					{% csrf_token %}
+                        <div class="row">
+                            <div class="col-3">
+                                <div>
+                                <label style="">Pronome</label>
+                                    <select id="PronSelect" class="form-control" name="TipoPronomeTratamento">
+                                        {% for dado in tipopron %}
+                                            <option value="{{ dado.id }}">{{ dado.Nome }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-4">
+                                {% render_field users.first_name style=style %}
+                            </div>
+
+                            <div class="col-5">
+                                {% render_field users.last_name style=style %}
+                            </div>
+					</div>
+                    <div class="row">
+
+                        <div class="col-2">
+                            {% render_field parte.Iniciais style=style %}
+                        </div>
+
+                   <div class='col-10'>
+                    <label>País</label>
+                        <select class="form-control" name="Pais">
+                            <option value="" selected disabled>Selecionar...</option>
+                            {% for dado in pais %}
+                                <option value="{{ dado.id }}">{{ dado.Nome }} {{ dado.id }}</option>
+                            {% endfor %}
+						</select>
+                    </div>
+                    </div>
+                    <div class="">
+                       {% render_field parte.DataNascimento style=style %}
+                    </div>
+
+					<div class="row" id="id_alerta">
+						<div class="col-8">
+                            <label>Documento</label>
+                        <select class="form-control" name="TipoDoc">
+                            <option value="" selected disabled>Selecionar...</option>
+                            {% for dado in tipoid %}
+                                <option value="{{ dado.id }}">{{ dado.Nome }}</option>
+                            {% endfor %}
+						</select>
+                        </div>
+                        <div class="col-4">
+                            {% render_field identificacao.Numero style=style %}
+                        </div>
+
+					</div>
+
+					<div class="row">
+						<div class="col my-auto">
+							{% render_field contato.CodigoDiscagemInternacional style=style %}
+						</div>
+						<div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    {% render_field contato.TipoContato style=style %}
+                                </div>
+                                <div class="col">
+                                    {% render_field contato.Identificacao style=style %}
+                                </div>
+                            </div>
+						</div>
+
+						<div class="w-100 sumir_mobile"></div>
+
+						<div class="col">
+                            <div style="margin-top: -10px;">
+                                <label>Operadora - teste commit</label>
+                                    <select class="form-control" style="width: 465px"  name="TipoOpTelefonia">
+                                        <option value="" selected disabled>Selecionar...</option>
+                                        {% for dado in tipoop %}
+                                            <option value="{{ dado.id }}">{{ dado.Nome }}</option>
+                                        {% endfor %}
+                                    </select>
+                            </div>
+						</div>
+
+                        <div class="col my-auto">
+                            {% render_field contato.Principal style=style %}
+						</div>
+
+                        <div class="col my-auto">
+                            {% render_field contato.NaoExibirContato style=style %}
+						</div>
+
+					</div>
+
+					<div class="row my-2 mx-2">
+						<div class="d-flex col align-items-center">
+                            <label >{% trans 'What is your biological sex?' %}</label>
+						</div>
+                        <div class="col">
+                        <select class="form-control" name="TipoSexo">
+                            <option value="" selected disabled>Selecionar...</option>
+                            {% for dado in tiposexo %}
+                                <option value="{{ dado.id }}">{{ dado.Nome }}</option>
+                            {% endfor %}
+						</select>
+                        </div>
+					</div>
+
+					<div class="row">
+                        <div class="col">
+                            {% render_field users.email style=style %}
+                        </div>
+                    </div>
+                        <div>
+                            {% render_field users.username style=style %}
+                        </div>
+					<div class="row">
+
+						<div class="col">
+							{% render_field users.password style=style %}
+						</div>
+						<div class="col" style="margin-top: -8px">
+                            Confirmar Senha
+							<input 
+								type="password" 
+								name="password_confirm" 
+								class="form-control text-center mt-3"
+								placeholder= "{% trans 'Confirm' %}"
+								maxlength="128" 
+								required="" 
+								id="id_password_2"
+							>
+						</div>
+						
+					</div>
+
+					<div class="my-4">
+						
+						<label>
+							{% trans 'Security question for future access recovery.' %}
+						</label>
+						<select class="form-control">
+
+							<option value="0">
+								{% trans 'What city did your parents meet in?' %}
+							</option>
+							<option value="1">
+								{% trans 'What was the name of your best friend in adolescence?' %}
+							</option>
+							<option value="2">
+								{% trans 'What was your first phone number?' %}
+							</option>
+							<option value="3">
+								{% trans 'What was the name of your first pet?' %}
+							</option>
+							<option value="4">
+								{% trans "What's your favourite food?" %}
+							</option>
+							<option value="5">
+								{% trans "What is your father's middle name?" %}
+							</option>
+							<option value="6">
+								{% trans 'What is your library card number?' %}
+							</option>
+							<option value="7">
+								{% trans 'What is your air miles program number?' %}
+							</option>
+
+						</select>
+						
+						<input 
+							placeholder = "{% trans 'Answer to the security question' %}"
+							class="form-control mt-2 text-center" 
+							type="text" 
+							id="security_question" 
+							name="Security Question" 
+						>
+
+
+					</div>
+
+					<div class="d-flex align-items-stretch m-3">
+                        {% render_field seguranca.AceitoTermoUso style=style %}
+						<label for="Termo" class="text-justify mx-1 tamanho_08em">
+							{% blocktrans trimmed %}
+								I have read and declare that I fully agree with the terms of service and regulation, 
+								with the intellectual property policy and with the privacy policy of Simões Translation, 
+								Interpretation & Languages ​​and Instant - Quotation of Linguistic Services. 
+								(Declaration made in compliance with articles 298-299 of the Brazilian Penal Code).
+							{% endblocktrans %}
+						</label>
+					</div>
+
+					<div class="d-flex align-items-stretch m-3">
+						{% render_field seguranca.DeclaracaoMaiorDezesseisAnos style=style %}
+						<label for="Termo16" class="text-justify mx-1 tamanho_08em">
+							{% blocktrans trimmed %}
+								I declare to be over 16 years of age. (Declaration made in compliance with articles 
+								298-299 of the Brazilian Penal Code).
+							{% endblocktrans %}
+						</label>
+					</div>
+
+					<div class="d-flex align-items-stretch m-3">
+						<input type="checkbox" id="Termo_notifica" name="Termos" class="align-self-start termo mt-1">
+						<label for="Termo_notifica" class="text-justify mx-1 tamanho_08em">
+							{% blocktrans trimmed %}
+								I totally agree to receive notifications and messages from Simões Translation, 
+								Interpretation & Languages and from Instant - Quote for Language Services via email, 
+								WhatsApp, Messenger and / or SMS;
+							{% endblocktrans %}
+						</label>
+					</div>
+
+					<div class="d-flex align-items-stretch m-3">
+						<input type="checkbox" id="Termo_newsletter" name="Termos" class="align-self-start termo mt-1">
+						<label for="Termo_newsletter" class="text-justify mx-1 tamanho_08em">
+							{% blocktrans trimmed %}
+								I totally agree to receive, with fixed or variable frequency, 
+								communications in the form of a newsletter or newsletter with news related to the Simões 
+								community and its services;
+							{% endblocktrans %}
+						</label>
+					</div>
+
+					<div class="d-flex align-items-stretch m-3">
+						<input type="checkbox" id="Termo_offers" name="Termos" class="align-self-start termo mt-1">
+						<label for="Termo_offers" class="text-justify mx-1 tamanho_08em">
+							{% blocktrans trimmed %}
+								I totally agree to receive communications and even though they may contain offers, 
+								promotions, news, advertisements, publicity and / or advertisements from Simões or third parties at 
+								the discretion of Simões.
+							{% endblocktrans %}
+						</label>
+					</div>
+
+					<button 
+						id = 'submit_button_join' 
+						class="btn btn-lg btn-primary btn-block mx-auto" 
+						type="submit"
+                        disabled
+					>{% trans 'Register' %}</button>
+
+				</form>
+			</div>
+		</div>
+	</div>
+	<div id="aviso" class="alert alert-warning alert-dismissible fade show m-3" role="alert">
+		<p class="mx-5 font-weight-normal text-center Mpro"> 
+			{% blocktrans trimmed %}
+				Your full name, date of birth and document is limited to just proving your 
+				registration status in the register of individuals, we do not seek information 
+				about your economic, financial or tax status, and in the event of any incorrect 
+				data, your account may, at any time, be blocked or permanently canceled.
+			{% endblocktrans %}
+		</p>
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+
+	<div id = "aviso_form" class="alert alert-warning alert-dismissible fade show m-3" role="alert">
+		<div class="mx-5 font-weight-normal text-center Mpro">
+			<p>{% trans 'Completing this form completely takes about 30 minutes. It is very important that you:' %}</p> 
+			<p>{% trans '1) has a good broadband Internet connection;' %}</p>
+			<p>{% trans '2) wait until the page completes its full load before starting to fill it out;' %}</p>
+			<p>{% trans '3) have your updated information, experiences, skills, languages, rates available;' %}</p>
+			<p>{% trans '4) and remember to click on the "Save" button at the bottom of this page, to safely save your data before exiting the system.' %}</p>
+		</div>
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+
+    {% render_field parte.User style=style %}
+    {% render_field seguranca.Parte style=style %}
+
+{% endblock %}
+{% block footer %}
+
+{% endblock %}
+{% block script %}
+
+	<script src="{% static 'instantprod/js/cadastro.js' %}"></script>
+
+{% endblock %}
+

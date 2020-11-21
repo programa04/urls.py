@@ -1,0 +1,240 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Cotação de Serviços Linguísticos {% endblock %}
+{% block head %}
+
+	<link 
+		rel="stylesheet" 
+		type="text/css" 
+		href = "{% static 'instantdesenv/css/proposta.css' %}"
+	>
+	
+{% endblock %}
+
+{% block content %}
+		
+	<div class="row">
+		<div class="col-auto mx-auto">
+			<img 
+				class="link_thumb" 
+				width="auto" 
+				src="{% static 'instantdesenv/img/r1traduc.png' %}"
+				alt="Serviços de Tradução"
+			>
+			<br>
+			<img 
+				class="link_thumb" 
+				width="auto" 
+				src="{% static 'instantdesenv/img/r2interp.png' %}"
+				alt="Serviços de Interpretação"
+			>
+			<br>
+		
+			<img 
+				class="link_thumb" 
+				width="auto" 
+				src="{% static 'instantdesenv/img/r3idioma.png' %}"
+				alt="Cursos"
+			>
+			<br>
+		
+			<img 
+				class="link_thumb" 
+				width="auto" 
+				src="{% static 'instantdesenv/img/r4licenc.png' %}"
+				alt="Licenciamento"
+			>
+				
+			<br>
+	
+			<img 
+				class="link_thumb" 
+				width="auto" 
+				src="{% static 'instantdesenv/img/r5locaeq.png' %}"
+				alt="Locação de Equipamentos"
+			>
+			
+			<br>
+		
+			<img 
+				class="link_thumb" 
+				width="auto"
+				src="{% static 'instantdesenv/img/r6livrar.png' %}"
+				alt="Materiais"
+			>
+			
+			<br>
+		
+			<img 
+				class="link_thumb" 
+				width="auto" 
+				src="{% static 'instantdesenv/img/r7tercei.png' %}"
+				alt="Terceirização"
+			>
+
+			<br>
+	
+			<img 
+				class="link_thumb" 
+				width="auto" 
+				src="{% static 'instantdesenv/img/r8servad.png' %}"
+				alt="Serviços Adicionais"
+			>
+			<br>
+		</div>
+	
+		<div class="col-auto mx-auto">
+			{% if user.is_authenticated %}
+				<form method="POST" action="cadastro/login/{{idpedido}}" id = "Form_2"> 
+					{% csrf_token %}
+					<fieldset>
+						<input type="hidden" name="id_ru" value="{{user.id}}">
+						<input type="hidden" name="nome" value="{{user.last_name}}">
+						<input type="hidden" name="id_pedido" value="{{idpedido}}">
+						<h2>Passo 2/3 - Detalhamento</h2><br>
+						<h6>Conte-nos um pouco mais sobre sua(s) necessidade(s), <br> clicando no(s) relatório(s) abaixo.</h6><br>
+						<div class="border-0 ">
+	 
+							{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+							{% if escolhas %}
+								{% for key, values in escolhas.items %}
+									{% for relatorio_tipo in values %}
+										<p class= "px-4">
+											<a 
+												onclick="Sumir(this)" 
+												class = "count text-white {{relatorio_tipo}}"
+												href="relatorio/{{idpedido}}/{{relatorio_tipo}}/" 
+												target="RelatorioIframe"
+											>{{relatorio_tipo}}
+											</a>
+										</p>
+									{% endfor %}
+								{% endfor %}
+							{% else %}
+								<br>
+							{% endif %}
+							
+							<br>
+							<br>
+							
+							<div class="d-flex align-items-end align-self-end flex-column bd-highlight mb-3">
+								<div class="mt-auto p-2 bd-highlight">
+									<input 
+										class="btn-primary align-bottom" 
+										type="button" 
+										value="Voltar" 
+										onClick="history.go(-1)"
+									>
+								</div>				
+							</div>	
+							<br>
+
+							<div class="m-3 p-3">
+								<div class="progress">
+									<div 
+										id = "ProgessBar"
+										class="progress-bar progress-bar-striped bg-danger" 
+										role="progressbar"  
+										aria-valuenow="0" 
+										aria-valuemin="0" 
+										aria-valuemax="100"
+									>
+										0%
+									</div>
+								</div>
+							</div>
+						</div>
+								
+					</fieldset>
+				</form>
+		
+			{% else %}
+				<form method="GET" action= "cadastro/login/{{idpedido}}" id = "Form_2"> 
+					{% csrf_token %}
+					<fieldset>
+						
+						<h2>Passo 2/3 - Detalhamento</h2><br>
+						<h6>Conte-nos um pouco mais sobre sua(s) necessidade(s), <br> clicando no(s) relatório(s) abaixo.</h6><br>
+						<div class="border-0 ">
+	
+							{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+							{% if escolhas %}
+								{% for key, values in escolhas.items %}
+									{% for relatorio_tipo in values %}
+										<p class= "px-4">
+											<a 
+												onclick="Sumir(this)" 
+												class = "count text-white {{relatorio_tipo}}"
+												href="relatorio/{{idpedido}}/{{relatorio_tipo}}/" 
+												target="RelatorioIframe"
+											>{{relatorio_tipo}}
+											</a>
+										</p>
+									{% endfor %}
+								{% endfor %}
+							{% else %}
+								<br>
+							{% endif %}
+							
+							<div class="d-flex align-items-end align-self-end flex-column bd-highlight mb-3">
+								<div class="mt-auto p-2 bd-highlight">
+									<input 
+										class="btn-primary align-bottom" 
+										type="button" 
+										value="Voltar" 
+										onClick="history.go(-1)"
+									>
+								</div>				
+							</div>	
+
+							<div class="m-3 p-3">
+								<div class="progress">
+									<div 
+										id = "ProgessBar"
+										class="progress-bar progress-bar-striped bg-danger" 
+										role="progressbar" 
+										aria-valuenow="0" 
+										aria-valuemin="0" 
+										aria-valuemax="100"
+									>
+										0%
+									</div>
+								</div>
+							</div>
+						</div>
+								
+					</fieldset>
+				</form>
+			{% endif %}
+			
+		
+		</div>
+		<div class="col-auto mx-auto">
+			<iframe 
+				name = "RelatorioIframe" 
+				id = "I1"  
+				sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin allow-top-navigation allow-popups" 
+				frameborder="0"
+				width="600" 
+				height="5800"
+				onload = "AtributosFrame()"
+			>
+				<p>Your browser does not support iframes.</p>
+			</iframe>
+		</div>
+	</div>
+
+{% endblock %}
+
+{% block footer %}
+
+	<script 
+		src="{% static 'instantdesenv/js/link_desaparecer.js' %}"
+	>
+	</script>
+	<script 
+		src="{% static 'instantdesenv/js/iframe_src.js' %}"
+	>
+	</script>
+			
+{% endblock %}

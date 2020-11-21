@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Entrar {% endblock %}
+{% block head %}
+
+	<!-- Custom styles for this template -->
+	<link 
+		rel="stylesheet" 
+		type="text/css" 
+		href = "{% static 'instantdesenv/css/proposta.css' %}"
+	>
+
+{% endblock %}
+
+{% block content %}
+  
+	{% if form.errors %}
+  		<p>Your username and password didn't match. Please try again.</p>
+ 	{% endif %}
+  
+ 	{% if next %}
+	  	{% if user.is_authenticated %}
+	 	 	<p>Your account doesn't have access to this page. To proceed,
+	 	 	please login with an account that has access.</p>
+		{% else %}
+	  		<p>Please login to see this page.</p>
+	  	{% endif %}
+  	{% endif %}
+		<div class="form-row" id = "form_login">
+			<form method="post" action="{% url 'login' %}" class="avalidar mx-auto">
+				{% csrf_token %}
+				<h1 class="h3 mb-3 font-weight-normal text-center">Log in to your account</h1><br>
+					<div class="my-2">
+						<label for="id_password">Senha</label>
+						{{ form.password}}
+						<div class="valid-tooltip sticky-top text-center">
+							Senha valida.
+						</div>
+						<div class="invalid-tooltip sticky-top text-center">
+							Senha invalida.
+						</div>
+					</div>
+				</div>
+
+				<br>
+				<br>
+				<input type="button" id = 'submit_button' value="login" class = 'btn btn-lg btn-primary btn-block'>
+				<input type="hidden" name="next" value="{{ next }}">
+			</form>
+		</div>
+
+
+	<br>
+	<p><a class = "text-white" href="{% url 'password_reset' %}">Esqueceu sua Senha?</a></p>
+  
+
+{% endblock %}
+
+{% block footer %}
+
+	<script
+		src="{% static 'instantdesenv/js/background_color.js' %}"
+	>
+	</script>
+	<script
+		src="{% static 'instantdesenv/js/validacao.js' %}"
+	>
+	</script>
+
+{% endblock %}

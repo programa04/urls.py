@@ -1,0 +1,237 @@
+body{
+    background-color:#008C88; 
+    color: white;
+    
+} 
+
+.bt {
+    background-color:#FEFE33 !important; 
+    border: 1em transparent !important;
+    color: #6D6E70 !important;
+    padding: 0.9375em 2em !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    position: relative !important;
+    font-size: 0.625em !important;
+    margin: 1em 1em !important;
+    text-transform: uppercase;
+    clear: both;
+    
+   
+}
+    @media (min-width: 320px) {
+        .bt {
+        max-width: 290px;
+        left: 10rem !important;
+        }
+    }   
+    @media (min-width: 425px) {
+        .bt {
+          max-width: 400px;
+          left: 17rem !important;
+        }
+    }   
+    @media (min-width: 576px) {
+        .bt {
+            max-width: 540px;
+            left: 20rem !important;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .bt {
+            max-width: 720px;
+            left: 38rem !important;
+        }
+    }
+
+    @media (min-width: 992px) {
+        .bt {
+            max-width: 960px;
+            left: 50rem !important;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .bt {
+            max-width: 1140px;
+            left: 72rem !important;
+        }
+    }
+
+h1{
+    margin-bottom: 1.25em;
+}
+
+.container-fluid {
+    display: -webkit-flex; /* Safari */
+    -webkit-align-items: flex-start; /* Safari 7.0+ */
+    display: flex;
+    align-items: flex-start; 
+}
+
+#R2{
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+    clear: both;
+}
+
+#R3{
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+    clear: both;
+}
+
+#R4{
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+    clear: both;
+}
+
+#R5{
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+    clear: both;
+}
+
+#R6{
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+    clear: both;
+}
+
+#R7{
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+    clear: both;
+}
+
+#R8{
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: 10px;
+    margin-left: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+    clear: both;
+
+}
+
+
+#R1 {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: 10px;
+    margin-left: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+    clear: both;
+    
+}
+
+    @media (min-width: 576px) {
+        #R1 {
+            max-width: 540px;
+        }
+    }
+
+    @media (min-width: 768px) {
+        #R1 {
+            max-width: 720px;
+        }
+    }
+
+    @media (min-width: 992px) {
+        #R1 {
+            max-width: 960px;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        #R1 {
+            max-width: 1140px;
+        }
+    }
+
+#R7 {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: 5x;
+    margin-left: 5px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+    clear: both;
+}
+
+    @media (min-width: 576px) {
+        #R7 {
+            max-width: 540px;
+        }
+    }
+
+    @media (min-width: 768px) {
+        #R7 {
+            max-width: 720px;
+        }
+    }
+
+    @media (min-width: 992px) {
+        #R7 {
+            max-width: 960px;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        #R7 {
+            max-width: 1140px;
+        }
+    }
+
+.logo{
+    width: 50%;
+    position: relative;
+    left: 25%;
+
+}
+
+.Relatorio{
+    background-color:#008C88; 
+    color: white;
+}
+
+.Relatorio1{
+    background-color:#0247FE; 
+    color: white;
+}
+
+.Relatorio2{
+    background-color:#8601AF; 
+    color: white;
+}
+
+.Relatorio3{
+    background-color:#FF00FF; 
+    color: white; 
+}
+
+.Relatorio4{
+    background-color:#66B032; 
+    color: white;
+}
+
+.Aparecer {
+    visibility: hidden;
+}
+  

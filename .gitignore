@@ -1,0 +1,15 @@
+/instantBetaDesenv/instant/Start.bat
+/instantBetaDesenv/instant/Migrar.bat
+/instantBetaDesenv/instant/Runserver.bat
+/instantBetaDesenv/instant/.idea/
+/instantBetaDesenv/VSCodeOpen.bat
+/instantBetaProd/VSCodeOpen.bat
+/VSCodeOpen.bat
+/instantBetaProd/instant/Migrar.bat
+/instantBetaProd/instant/Runserver.bat
+/instantBetaProd/instant/Start.bat
+/instantBetaTeste/instant/Migrar.bat
+/instantBetaTeste/instant/Runserver.bat
+/instantBetaTeste/instant/Start.bat
+/instantBetaTeste/VSCodeOpen.bat
+/env/

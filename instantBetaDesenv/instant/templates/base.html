@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+{% load static %}
+{% load i18n %}
+{% load l10n %}
+{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{LANGUAGE_CODE}}">
+  <head>
+	<!-- Required meta tags -->
+	<title> Instant - {% block title %} {% endblock %}</title>
+	<meta charset="UTF-8">
+	<meta name="description" content = "Instant">
+	<meta name="keywords" content="formulario, Instant, tradução, interpretação, idioma, cliente, comercial">
+	<meta name="author" content="Simões Tradução, Interpretação & Idiomas">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" type="text/css" href = "{% static 'instantdesenv/js/jquery/jquery-ui.css' %}">
+	<link rel="stylesheet" type="text/css" href = "{% static 'instantdesenv/js/jquery/jquery-ui.structure.min.css' %}">
+	<link rel="stylesheet" type="text/css" href = "{% static 'instantdesenv/js/jquery/jquery-ui.theme.css' %}">
+	<link rel="stylesheet" type="text/css" href = "{% static 'instantdesenv/css/bootstrap-datepicker3.min.css' %}">
+    <link rel="stylesheet" type="text/css" href = "{% static 'instantdesenv/css/bootstrap-datepicker3.min.css' %}">
+    <link rel="stylesheet" type="text/css" href = "{% static 'instantdesenv/css/bootstrap-datepicker3.standalone.min.css' %}">
+    <link rel="stylesheet" type="text/css" href = "{% static 'instantdesenv/bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href = "{% static 'instantdesenv/bootstrap/css/bootstrap-grid.min.css' %}">
+	<link rel="stylesheet" type="text/css" href = "{% static 'instantdesenv/bootstrap/css/bootstrap-reboot.min.css' %}">
+	<link rel="stylesheet" href="{% static 'instantdesenv/css/base.css' %}">
+	{% block head %}
+
+	{% endblock %}
+
+</head>
+  <body>
+	<header>
+		
+		<div class="locale_fundo">
+			{% for Dado in request.GET.Bandeiras %}
+				{% if Dado.Nome in LANGUAGE_CODE %}
+					<span class="locale">
+						<a 
+							id="locale_selecionado"
+							class="locale_selecionado" 
+							href= "/{{Dado.Nome}}/{{request.GET.url}}"
+							hreflang="{{Dado.Nome}}" 
+						>
+							{{Dado.NomeOriginal}} 
+							<img
+								class="bandeiras"
+								src="data:image/png;base64, {{Dado.Arquivo}}" 
+								alt="{{Dado.NomeOriginal}}" 
+							/>
+						</a>
+					</span> 
+						
+				{% else %}
+					<span class="locale">
+						<a
+							class="locale_link" 
+							href= "/{{Dado.Nome}}/{{request.GET.url}}" 
+							hreflang="{{Dado.Nome}}"
+						>
+						{{Dado.NomeOriginal}}
+							<img
+								class="bandeiras"
+								src="data:image/png;base64, {{Dado.Arquivo}}" 
+								alt="{{Dado.NomeOriginal}}" 
+							/>
+						</a>
+					</span>
+						 
+				{% endif %}
+	
+			{% endfor %}
+			<span class="locale_busca">
+				<input 
+					type="text" 
+					id = "botao_busca"
+					placeholder="Buscar"
+				>
+			</span>  
+		</div>
+
+		<ul class="nav nav-tabs justify-content-end">
+			<li class="nav-item">
+				<a class="nav-link text-white" href= "">{% trans 'Start' %}</a>
+			</li>
+			{% if user.is_authenticated %}
+				<li class="nav-item">
+					<a class="nav-link text-white" href="{% url 'logout' %}">{% trans 'Logout' %}</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link disabled text-white" href="#">{% trans 'Welcome' %}, {{user.last_name}}</a>
+				</li>
+			{% else %}
+				<li class="nav-item">
+					<a class="nav-link text-white" href="{% url 'login' %}">{% trans 'Log in' %}</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-white" href="">{% trans 'Sign up' %}</a>
+				</li>
+			{% endif %}
+
+		</ul>
+
+		<div class="position-relative">
+			<img 
+				src= "{% static 'instantdesenv/img/logobranco.png' %}"
+				alt="instant logo branco" 
+				class="mx-auto logo"
+			>
+			<p class="beta">Beta</p>
+		</div>
+		
+		<h3 class="text-center traducao">{% trans 'QUOTATION OF LINGUISTIC SERVICES' %}</h3>
+
+		{% block header %}
+
+		{% endblock %}
+			
+	</header>
+
+	<main class="container">
+		{% block content %}
+		
+		{% endblock %}
+	</main>	
+	
+	<footer id = 'Mpro' >
+		<div class="mt-3 footer_fundo">
+			
+			{% block footer %}
+			
+			{% endblock %}
+			<div class="container mx-auto text-white">
+				<div class="row">
+
+					<div class="col-md-auto my-2 p-0 mobile-100">
+						<div class="container p-0">
+							<div class="row justify-content-start">
+								<div class="col-md-auto m-0 p-0 mobile-45">
+									<a
+										href="http://instant.simoes.trd.br/" 
+										target="_blank" 
+										rel="noopener noreferrer"
+										class="link tamanho_08em"
+									>
+									{% trans 'Instant'%}
+									</a>
+									
+								</div>
+								<strong class="sumir_mobile">/</strong>
+								<div class="col-md-auto m-0 p-0 text-left mobile-45">
+									<a 
+										href="http://suporte.simoes.trd.br/" 
+										target="_blank" 
+										rel="noopener noreferrer"
+										class="link tamanho_08em"
+									>
+									{% trans 'Support' %}
+									</a>
+									
+								</div>
+								<strong class="sumir_mobile">/</strong>
+								<div class="col-md-auto m-0 p-0 mobile-45">
+									<a 
+										href="http://cat.simoes.trd.br/" 
+										target="_blank" 
+										rel="noopener noreferrer"
+										class="link tamanho_08em"
+									>
+									{% trans 'CAT' %}
+									</a>
+		
+								</div>
+								
+								<div class="w-100 sumir_mobile"></div>
+								
+								<div class="col-sm-auto m-0 p-0 mobile-45">
+									<a 
+										href="http://projetos.simoes.trd.br/" 
+										target="_blank" 
+										rel="noopener noreferrer"
+										class="link tamanho_08em"
+									>
+									{% trans 'Projects' %}
+									</a>
+									
+								</div>
+								<strong class="sumir_mobile">/</strong>
+								<div class="col-sm-auto m-0 p-0 mobile-45">
+									<a 
+									href="http://erp.simoes.trd.br/" 
+									target="_blank" 
+									rel="noopener noreferrer"
+									class="link tamanho_08em"
+								>
+								{% trans 'ERP' %}
+								</a>
+								
+								</div>
+								<strong class="sumir_mobile">/</strong>
+								<div class="col-sm-auto m-0 p-0 mobile-45">
+									<a 
+									href="http://ead.simoes.trd.br/" 
+									target="_blank" 
+									rel="noopener noreferrer"
+									class="link tamanho_08em"
+								>
+								{% trans 'e-learning' %}
+								</a>
+
+								</div>
+								
+								<div class="w-100 sumir_mobile"></div>
+
+								<div class="col-sm-auto m-0 p-0 mobile-45">
+									<a 
+									href="http://meuholerite.com.br/" 
+									target="_blank" 
+									rel="noopener noreferrer"
+									class="link tamanho_08em"
+									>
+									{% trans 'Paycheck' %}
+									</a>
+
+								</div>
+								<strong class="sumir_mobile sumir_mobile">/</strong>
+								<div class="col-sm-auto m-0 p-0 mobile-45">
+									<a 
+										href="https://www.simoes.trd.br/restrita-principal" 
+										target="_blank" 
+										rel="noopener noreferrer"
+										class="link tamanho_08em"
+									>
+									{% trans 'Restricted Area' %}
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="links_linha_vertical mr-3 mt-3"></div>
+
+					<div class="col-md-auto my-2 p-0">
+				
+						<div class="row">
+							<div class="col-md-auto mx-2 p-0">
+								<a 
+									href="https://www.simoes.trd.br/termos" 
+									target="_blank" 
+									rel="noopener noreferrer"
+									class="link tamanho_08em"
+								>
+								{% trans 'Terms of Service and Regulation' %}
+								</a>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-auto mx-2 p-0">
+								<a 
+									href="https://www.simoes.trd.br/privacidade" 
+									target="_blank" 
+									rel="noopener noreferrer"
+									class="link tamanho_07em"
+								>
+								{% trans 'Intellectual Property' %}
+								</a>
+							</div>
+							<strong class="sumir_mobile">/</strong>
+							<div class="col-md-auto mx-2 p-0">
+								<a 
+									href="https://www.simoes.trd.br/faq" 
+									target="_blank" 
+									rel="noopener noreferrer"
+									class="link tamanho_08em"
+								>
+								{% trans 'FAQ' %}
+								</a>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-auto mx-2 p-0">
+								<a 
+									href="https://www.simoes.trd.br/dir-autoral-prop-intelectual" 
+									target="_blank" 
+									rel="noopener noreferrer"
+									class="link tamanho_08em"
+								>
+								{% trans 'Privacy Policy' %}
+								</a>
+							</div>
+						</div>
+					
+					</div>
+
+					<div class="col-md-auto my-2 mx-auto p-0">
+						<section class="section_redes mx-auto">
+
+							<h5 class="text-center lead m-1"><strong> {% trans 'Social networks:' %} </strong></h5>
+							<div class="links_linha_horizontal my-2 bg-white"></div>
+							<div class="container my-2 p-0">
+								<div class="p-0 m-0 justify-content-center ">
+									<a class="redes_sociais" target= '_blank' href="http://facebook.simoes.trd.br">
+										<img
+											src= "{% static 'instantdesenv/img/facebook.png' %}"
+											alt="instant redes sociais link para o facebook" 
+											class="img-fluid m-0"
+										>
+									</a>
+									<a class="redes_sociais" target='_blank' href="http://instagram.simoes.trd.br">
+										<img
+											src= "{% static 'instantdesenv/img/instagram.png' %}"
+											alt="instant redes sociais link para o instagram" 
+											class="img-fluid m-0"
+										>
+									</a>
+									<a class="redes_sociais" target='_blank' href="http://linkedin.simoes.trd.br">
+										<img
+											src= "{% static 'instantdesenv/img/linkedin.png' %}"
+											alt="instant redes sociais link para o linkedin" 
+											class="img-fluid m-0"
+										>
+									</a>
+									<a class="redes_sociais" target='_blank' href="http://twitter.simoes.trd.br">
+										<img
+											src= "{% static 'instantdesenv/img/twitter.png' %}"
+											alt="instant redes sociais link para o twitter" 
+											class="img-fluid m-0"
+										>
+									</a>
+									<a class="redes_sociais" target ='_blank' href="http://canal.simoes.trd.br">
+										<img
+											src= "{% static 'instantdesenv/img/youtube.png' %}"
+											alt="instant redes sociais link para o youtube" 
+											class="img-fluid m-0"
+										>
+									</a>
+								</div>
+							</div>
+						</section>
+					</div>
+
+					<div class="col-md-auto my-2 mx-auto p-0">
+						<section id = 'contato' class="container">
+							<div class="container">
+								<div class="row">
+
+									<div class="col-md-auto mt-2 p-0 tam_footer_img" >
+										<img
+											src= "{% static 'instantdesenv/img/icone.png' %}"
+											alt="instant contatos"
+											class="img-contato"
+										>
+									</div>
+									<div class="col-md-auto mt-2 p-0 tam_footer_num">
+
+										<p class="d-inline h5 lead" ><strong> {% trans 'Contact:' %}</strong></p>
+										
+										<div class="links_linha_horizontal my-2 bg-white"></div>
+
+										<a
+											href="tel:+55 (21) 3185-8723"
+											class= "d-inline text-justify text-white lead mb-0"
+										>
+											<strong class="tamanho_08em">+55</strong> (21) 3185-8723
+										</a>
+
+									</div>
+
+								</div>
+							</div>
+
+						</section>
+					</div>
+
+					<div class="col-md-auto my-2 mx-auto p-0">
+						<section id = 'download' class="container p-0">
+
+							<a 
+								id = "Download_Apresentacao"
+								class="my-1" 
+								target= '_blank' 
+								href="http://apresentacao.simoes.trd.br/"
+							>
+								<p class = "text-white text-center">{% trans 'Download' %}</p>
+								<p class = "text-white text-center">{% trans 'Presentation' %}</p>
+								<p class = "text-center">
+									<img
+										src= "{% static 'instantdesenv/img/download.png' %}"
+										alt="instant download apresentação" 
+										class="img-fluid redes_sociais mx-auto"
+									>
+								</p>
+
+							</a>
+							
+						</section>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div id = "final_pagina" class="bg_grad_ciano">
+			<div class="col bg-white px-2 pt-1 m-0">
+				<p class = "text-center text-dark tamanho_08em">
+					{% trans 'Made with ' %}  <span class="text-danger">♥</span> {% trans ' in São João de Meriti, Rio de Janeiro. © 2020. All rights reserved.' %}  
+					<a class="text-dark m-0" href= "https://www.simoes.trd.br"> {% trans 'Simões Translation, Interpretation & Languages.' %}</a> 
+					CNPJ: 16.542.681/0001-50
+				</p>
+			</div>	
+		</div>
+	</footer>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src= "{% static 'instantdesenv/js/jquery/jquery-3.3.1.min.js'%}"></script>
+				
+    <script src= "{% static 'instantdesenv/jquery-ui/jquery-ui.min.js' %}"></script>
+
+    <script src = "{% static 'instantdesenv/bootstrap/js/bootstrap.min.js' %}"></script>
+    
+    <script src = "{% static 'instantdesenv/bootstrap/js/bootstrap.bundle.js' %}"></script>
+
+    <script src="{% static 'instantdesenv/js/bootstrap-datepicker.min.js' %}"></script>
+
+    <script src="{% static 'instantdesenv/locales/bootstrap-datepicker.pt-BR.min.js' %}" charset="UTF-8"></script>
+    
+    <script src="{% static 'instantdesenv/js/base.js' %}"></script>
+
+	{% block script %}
+        
+	{% endblock %}
+
+</body>
+</html>

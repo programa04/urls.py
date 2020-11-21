@@ -1,0 +1,350 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Cotação de Serviços Linguísticos {% endblock %}
+{% block head %}
+
+{% endblock %}
+{% block content %}
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm">
+				
+				<form id="Form" action="" method="POST" class= "container mx-auto">
+					{% csrf_token %}
+					<h1 class="text-center">Central de Documentos</h1>
+					<div class="accordion" id="accordionInstant">
+						<div>
+							<div id="heading_1">
+								<h5 class="mb-0">
+									<button 
+										class="btn btn-outline-light btn-block" 
+										type="button" 
+										data-toggle="collapse" 
+										data-target="#collapse_1" 
+										aria-expanded="true" 
+										aria-controls="collapse_1"
+									>
+										{{form.TipoDocumento.label}}
+										</button>
+								</h5>
+							</div>
+						
+							<div 
+								id="collapse_1" 
+								class="collapse border border-white" 
+								aria-labelledby="heading_1" 
+								data-parent="#accordionInstant"
+							>
+								<div class="card-body">
+									{{form.TipoDocumento}}
+								</div>
+							</div>
+						</div>
+						<div>
+							<div id="heading_2">
+								<h5 class="mb-0">
+									<button 
+										class="btn btn-outline-light btn-block" 
+										type="button" 
+										data-toggle="collapse" 
+										data-target="#collapse_2" 
+										aria-expanded="true" 
+										aria-controls="collapse_2"
+									>
+										{{form.Titulo.label}}
+									</button>
+								</h5>
+							</div>
+						
+							<div 
+								id="collapse_2" 
+								class="collapse border border-white" 
+								aria-labelledby="heading_2" 
+								data-parent="#accordionInstant"
+							>
+								<div class="card-body">
+									{{form.Titulo}}
+								</div>
+							</div>
+						</div>
+						<div>
+							<div id="heading_3">
+								<h5 class="mb-0">
+									<button 
+										class="btn btn-outline-light btn-block" 
+										type="button" 
+										data-toggle="collapse" 
+										data-target="#collapse_3" 
+										aria-expanded="true" 
+										aria-controls="collapse_3"
+									>
+										{{form.SubTituloServico.label}}
+									</button>
+								</h5>
+							</div>
+						
+							<div 
+								id="collapse_3" 
+								class="collapse border border-white" 
+								aria-labelledby="heading_3" 
+								data-parent="#accordionInstant"
+							>
+								<div class="card-body">
+									{{form.SubTituloServico}}
+								</div>
+							</div>
+						</div>
+						<div>
+							<div id="heading_4">
+								<h5 class="mb-0">
+									<button 
+										class="btn btn-outline-light btn-block" 
+										type="button" 
+										data-toggle="collapse" 
+										data-target="#collapse_4" 
+										aria-expanded="true" 
+										aria-controls="collapse_4"
+									>
+										{{form.SubTituloCargo.label}}
+									</button>
+								</h5>
+							</div>
+						
+							<div 
+								id="collapse_4" 
+								class="collapse border border-white" 
+								aria-labelledby="heading_4" 
+								data-parent="#accordionInstant"
+							>
+								<div class="card-body">
+									{{form.SubTituloCargo}}
+								</div>
+							</div>
+						</div>	
+						<div>
+							<div id="heading_5">
+								<h5 class="mb-0">
+									<button 
+										class="btn btn-outline-light btn-block" 
+										type="button" 
+										data-toggle="collapse" 
+										data-target="#collapse_5" 
+										aria-expanded="true" 
+										aria-controls="collapse_5"
+									>
+										{{form.SubTipoDocumento.label}}
+									</button>
+								</h5>
+							</div>
+						
+							<div 
+								id="collapse_5" 
+								class="collapse border border-white" 
+								aria-labelledby="heading_5" 
+								data-parent="#accordionInstant"
+							>
+								<div class="card-body">
+									{{form.SubTipoDocumento}}
+								</div>
+							</div>
+						</div>
+						
+						<div>
+							<div id="heading_6">
+								<h5 class="mb-0">
+									<button 
+										class="btn btn-outline-light btn-block" 
+										type="button" 
+										data-toggle="collapse" 
+										data-target="#collapse_6" 
+										aria-expanded="true" 
+										aria-controls="collapse_6"
+									>
+										{{form.LinguaClausula.label}}
+									</button>
+								</h5>
+							</div>
+						
+							<div 
+								id="collapse_6" 
+								class="collapse border border-white" 
+								aria-labelledby="heading_6" 
+								data-parent="#accordionInstant"
+							>
+								<div class="card-body">
+									{{form.LinguaClausula}}
+								</div>
+							</div>
+						</div>
+						<div>
+							<div id="heading_7">
+								<h5 class="mb-0">
+									<button 
+										class="btn btn-outline-light btn-block" 
+										type="button" 
+										data-toggle="collapse" 
+										data-target="#collapse_7" 
+										aria-expanded="true" 
+										aria-controls="collapse_7"
+									>
+										{{form.Pais.label}}
+									</button>
+								</h5>
+							</div>
+						
+							<div 
+								id="collapse_7" 
+								class="collapse border border-white" 
+								aria-labelledby="heading_7" 
+								data-parent="#accordionInstant"
+							>
+								<div class="card-body">
+									{{form.Pais}}
+								</div>
+							</div>
+						</div>
+						<div>
+							<div id="heading_8">
+								<h5 class="mb-0">
+									<button 
+										class="btn btn-outline-light btn-block" 
+										type="button" 
+										data-toggle="collapse" 
+										data-target="#collapse_8" 
+										aria-expanded="true" 
+										aria-controls="collapse_8"
+									>
+										{{form.TipoClausula.label}}	
+									</button>
+								</h5>
+							</div>
+						
+							<div 
+								id="collapse_8" 
+								class="collapse show border border-white" 
+								aria-labelledby="heading_8" 
+								data-parent="#accordionInstant"
+							>
+								<div class="card-body">
+									{{form.TipoClausula}}
+								</div>
+							</div>
+						</div>
+						<div>
+							<div id="heading_9">
+								<h5 class="mb-0">
+									<button 
+										class="btn btn-outline-light btn-block" 
+										type="button" 
+										data-toggle="collapse" 
+										data-target="#collapse_9" 
+										aria-expanded="true" 
+										aria-controls="collapse_9"
+									>
+										{{form.Contratante.label}}	
+									</button>
+								</h5>
+							</div>
+						
+							<div 
+								id="collapse_9" 
+								class="collapse show border border-white" 
+								aria-labelledby="heading_9" 
+								data-parent="#accordionInstant"
+							>
+								<div class="card-body">
+									<p>Escreva o nome do contratante</p>
+									{{form.Contratante}}
+								</div>
+							</div>
+						</div>
+						<div>
+							<div id="heading_10">
+								<h5 class="mb-0">
+									<button 
+										class="btn btn-outline-light btn-block" 
+										type="button" 
+										data-toggle="collapse" 
+										data-target="#collapse_10" 
+										aria-expanded="true" 
+										aria-controls="collapse_10"
+									>
+										{{form.Contratado.label}}
+									</button>
+								</h5>
+							</div>
+						
+							<div 
+								id="collapse_10" 
+								class="collapse show border border-white" 
+								aria-labelledby="heading_10" 
+								data-parent="#accordionInstant"
+							>
+								<div class="card-body">
+									<p>Escreva o nome do contratado</p>
+									{{form.Contratado}}
+								</div>
+							</div>
+						</div>																																																																	
+					</div>
+					<!-- <button type="button" class="btn btn-outline-light btn-block mt-5">Gerar</button> -->
+				</form>
+			</div>
+			<div class="container-fluid">
+				<div class="d-block p-5 btn-group-toggle btn-group-vertical mx-auto">
+					<div class="row">
+						<div class="col-sm-4">
+							<button 
+								type="button" 
+								class="btn btn-primary btn-lg"
+								id = 'download_button'
+							>
+								<!-- onclick="ExecutaDownload()" -->
+								Download
+							</button>
+							<ul class="list-group" id = "lista_download">
+								{% for chave, valor in ContratosListas.items %}
+
+									<li 
+										class="list-group btn-group-toggle RetornaContrato" 
+										data-toggle="buttons"
+										onclick="RetornaContrato(this)"
+									>	
+									
+										<label class="btn btn-outline-light">
+											<input
+												
+												name= "documento/pre/{{valor|join:'/'}}"
+												value= "Contratante/Contratado/{{valor|join:'/'}}"
+												id = "id_{{valor|join:'_'}}"
+												type= "checkbox"
+											>
+											{{chave}}
+										</label>	
+									</li>
+								{% empty %}
+    								<li>Não Existem Documentos</li>
+								{% endfor %}
+							</ul>
+						</div>
+						<div class="col-sm-8">
+							<div id = "VerDocumento" ></div>
+						</div>
+					</div>
+					<div id = "Iframe" class="invisible"></div>
+				</div>
+			</div>		
+		</div>
+	</div>
+	  
+{% endblock %}
+
+{% block footer %}
+
+	<script 
+		src="{% static 'instantprod/js/submit_contrato.js' %}"
+	>
+	</script>	
+		
+{% endblock %}

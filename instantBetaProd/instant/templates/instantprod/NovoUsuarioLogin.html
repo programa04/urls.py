@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Proposta {% endblock %}
+{% block head %}
+
+	<link 
+		rel="stylesheet" 
+		type="text/css" 
+		href = "{% static 'instantprod/css/proposta.css' %}"
+	>
+	
+{% endblock %}
+
+{% block content %}
+	<div class="mx-5 px-5 container-fluid"> 
+		<div class="pl-5 pr-1 mx-auto Cadastro" style="width: 600px;">
+			<div class="mx-auto pl-5 pr-1 container-fluid">
+				<form class="form-signin mx-auto pl-5 pr-1 avalidar" method="POST" action="" >
+					{% csrf_token %}
+					<!-- <img class="mb-4" src="{% static 'instantprod/img/simoescapa.png' %}" alt="simoes capa login" width="140" height="140"> -->
+					<h1 class="h3 mb-3 font-weight-normal text-center">Passo 3/3 - Inscreva-se</h1>
+					<br>
+					<br>	
+					<input type="hidden" name="id_relatorio" value="{{id_relatorio}}">
+					<label class="sr-only">Nome Completo</label>
+					{{form.last_name}}<br>
+					{{form.last_name.error}}<br>
+					<label class="sr-only">Data de Nascimento</label>
+					{{form.first_name}}<br>
+					{{form.first_name.error}}<br>
+					<label class="sr-only">CPF</label>
+					{{form.username}}<br>
+					{{form.username.error}}<br>
+					<label class="sr-only">Email</label>
+					{{form.email}}<br>
+					{{form.email.error}}<br>
+					<label for="inputPassword" class="sr-only">Senha</label>
+					{{form.password}}<br>
+					{{form.password.error}}<br>
+					<br>
+
+					<button 
+						id = 'submit_button_join' 
+						class="btn btn-lg btn-primary btn-block" 
+						type="submit"
+					>Registrar</button>
+					<div class="align-items-end p-4 m-4 align-bottom">
+						<div class= "position-relative">
+							<p class="p-auto text-left">
+								<a 
+									class = "alert text-white" 
+									id = "troca" 
+									href="#LogShow"
+								>
+								Possui Login? Acesse aqui!
+								</a>
+							</p>
+						</div>
+					</div>	
+				</form>
+			</div>
+		</div>
+		<div class="mx-auto">
+			<div class="ui-helper-hidden" id = "LogShow">
+				<div class="container-fluid">
+					{% if form.errors %}
+						<p>Your username and password didn't match. Please try again.</p>
+					{% endif %}
+				
+					{% if next %}
+						{% if user.is_authenticated %}
+							<p>Your account doesn't have access to this page. To proceed,
+							please login with an account that has access.</p>
+						{% else %}
+							<p>Please login to see this page.</p>
+						{% endif %}
+					{% endif %}
+				
+					<form method = "POST" action="" class = "avalidar">
+						{% csrf_token %}
+						<h1 class="h3 mb-3 font-weight-normal text-center"> Entrar </h1>
+						<input type="hidden" name="id_r2" value="{{id_r2}}">
+						<div class="p-1 mx-5 mb-3">
+							<table class="mx-auto">
+								<tbody>
+									<tr>
+										<td>
+											<input 
+												type="text" 
+												name="username" 
+												class="form-control" 
+												placeholder="CPF" 
+												maxlength="150" 
+												required="" 
+												id="idusername"
+											>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input 
+												type="password" 
+												name="password" 
+												class="form-control" 
+												placeholder="Senha" 
+												maxlength="128" 
+												required="" 
+												id="idpassword"
+											>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<input type="submit" value="login" class = 'btn btn-lg btn-primary btn-block'>
+						<input type="hidden" name="next" value="{{ next }}">
+						<div class="align-items-end p-4 m-4 align-bottom">
+							<div class= "position-relative">
+								<p class="p-auto text-left">
+									<a 
+										class = "alert text-white ui-helper-hidden" 
+										id = "volta" 
+										href="#LogShow"
+									>
+									Não Possui Login? Inscreva-se aqui!
+									</a>
+								</p>
+								<p><a class = "p-2 mx-3 text-white" href="{% url 'password_reset' %}">Esqueceu sua Senha?</a></p>
+							</div>
+						</div>
+					</form>				
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block footer %}
+
+	<script 
+		src="{% static 'instantprod/js/background_color.js' %}"
+	>
+	</script>
+
+	<script 
+		src="{% static 'instantprod/js/login_hide_and_show.js' %}"
+	>
+	</script>
+
+	<script 
+		src="{% static 'instantprod/js/data.js' %}"
+	>
+	</script>  	
+
+	<script 
+		src="{% static 'instantprod/js/validacao.js' %}"
+	>
+	</script>
+
+	<div id = "Sumir">
+		<br>
+		<p> 
+			* Seu nome completo, data de nascimento 
+			e CPF limita-se tão somente a comprovar 
+			sua situação cadastral no cadastro de 
+			pessoas físicas, não buscamos informações 
+			sobre a sua situação econômica, financeira 
+			ou fiscal, e na hipótese de haver algum dado 
+			incorreto, sua conta poderá, a qualquer tempo, 
+			ser bloqueada ou cancelada definitivamente.
+		</p>
+		<br>
+	</div>
+{% endblock %}

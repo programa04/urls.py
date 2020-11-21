@@ -1,0 +1,123 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-31 12:32-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\templates\base.html:595
+msgid "Start"
+msgstr ""
+
+#: .\templates\base.html:599
+msgid "Logout"
+msgstr ""
+
+#: .\templates\base.html:602
+msgid "Welcome"
+msgstr ""
+
+#: .\templates\base.html:606 .\templates\registration\registration_form.html:5
+msgid "Log in"
+msgstr ""
+
+#: .\templates\base.html:609
+msgid "Sign up"
+msgstr ""
+
+#: .\templates\base.html:624
+msgid "QUOTATION OF LINGUISTIC SERVICES"
+msgstr ""
+
+#: .\templates\base.html:657
+msgid "Instant"
+msgstr ""
+
+#: .\templates\base.html:669
+msgid "Support"
+msgstr ""
+
+#: .\templates\base.html:681
+msgid "CAT"
+msgstr ""
+
+#: .\templates\base.html:695
+msgid "Projects"
+msgstr ""
+
+#: .\templates\base.html:707
+msgid "ERP"
+msgstr ""
+
+#: .\templates\base.html:719
+msgid "e-learning"
+msgstr ""
+
+#: .\templates\base.html:733
+msgid "Paycheck"
+msgstr ""
+
+#: .\templates\base.html:745
+msgid "Restricted Area"
+msgstr ""
+
+#: .\templates\base.html:764
+msgid "Terms of Service and Regulation"
+msgstr ""
+
+#: .\templates\base.html:776
+msgid "Intellectual Property"
+msgstr ""
+
+#: .\templates\base.html:787
+msgid "FAQ"
+msgstr ""
+
+#: .\templates\base.html:799
+msgid "Privacy Policy"
+msgstr ""
+
+#: .\templates\base.html:809
+msgid "Social networks:"
+msgstr ""
+
+#: .\templates\base.html:867
+msgid "Contact:"
+msgstr ""
+
+#: .\templates\base.html:895
+msgid "Download"
+msgstr ""
+
+#: .\templates\base.html:896
+msgid "Presentation"
+msgstr ""
+
+#: .\templates\base.html:916
+msgid "Made with "
+msgstr ""
+
+#: .\templates\base.html:916
+msgid " in São João de Meriti, Rio de Janeiro. © 2020. All rights reserved."
+msgstr ""
+
+#: .\templates\base.html:917
+msgid "Simões Translation, Interpretation & Languages."
+msgstr ""
+
+#: .\templates\registration\registration_form.html:65
+msgid "Forgot your password"
+msgstr ""

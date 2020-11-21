@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt">
+	<head>
+		<title> {% block title %} {% endblock %} - Instant</title>
+		<meta charset="UTF-8">
+		<meta name="description" content = "Instant">
+		<meta 
+			name="keywords" 
+			content=
+				"cadastro,
+				formulario,
+				Instant,
+				tradução,
+				interpretação,
+				idioma,
+				cliente,
+				comercial"
+		>
+		<meta name="author" content="Simões Tradução, Interpretação & Idiomas">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<script 
+			src= "{% static 'instantprod/js/jquery/jquery-3.3.1.min.js' %}"
+		>
+		</script>
+	
+		<script 
+			src= "{% static 'instantprod/jquery-ui/jquery-ui.min.js' %}"
+		>
+		</script>
+
+		<link 
+			rel="stylesheet"
+			type="text/css"  
+			href = "{% static 'instantprod/js/jquery/jquery-ui.css' %}"
+		>
+
+		<link 
+			rel="stylesheet"
+			type="text/css"  
+			href = "{% static 'instantprod/js/jquery/jquery-ui.structure.min.css' %}"
+		>
+
+		<link 
+			rel="stylesheet"
+			type="text/css"  
+			href = "{% static 'instantprod/js/jquery/jquery-ui.theme.css' %}"
+		>
+
+		<link 
+			rel="stylesheet" 
+			type="text/css" 
+			href = "{% static 'instantprod/css/bootstrap-datepicker3.min.css' %}"
+		>
+
+		<link 
+			rel="stylesheet" 
+			type="text/css" 
+			href = "{% static 'instantprod/css/bootstrap-datepicker3.min.css' %}"
+		>
+
+		<link 
+			rel="stylesheet" 
+			type="text/css" 
+			href = "{% static 'instantprod/css/bootstrap-datepicker3.standalone.min.css' %}"
+		>
+		
+		<script 
+			src = "{% static 'instantprod/bootstrap/js/bootstrap.min.js' %}"
+		>
+		</script>
+
+		<script 
+			src = "{% static 'instantprod/bootstrap/js/bootstrap.bundle.js' %}"
+		>
+		</script>
+
+		<script 
+			src="{% static 'instantprod/js/bootstrap-datepicker.min.js' %}"
+		>
+		</script>
+
+		<script 
+			src="{% static 'instantprod/locales/bootstrap-datepicker.pt-BR.min.js' %}"
+			charset="UTF-8"
+		>
+		</script>
+
+
+		<link 
+			rel="stylesheet"
+			type="text/css"  
+			href = "{% static 'instantprod/bootstrap/css/bootstrap.css' %}"
+
+		>
+		<link 
+			rel="stylesheet"
+			type="text/css"  
+			href = "{% static 'instantprod/bootstrap/css/bootstrap-grid.min.css' %}"
+		>
+
+		<link 
+			rel="stylesheet"
+			type="text/css"  
+			href = "{% static 'instantprod/bootstrap/css/bootstrap-reboot.min.css' %}"
+		> 
+
+		<script 
+			src = "{% static 'instantprod/js/data.js' %}"
+		>
+		</script>
+
+		{% block head %}
+		
+		{% endblock %}
+	</head>
+	<body>
+		
+		<div class="container-fluid">
+			<main>
+				{% block content %}
+				
+				{% endblock %}
+			</main>	
+		</div>
+	</body>
+</html>

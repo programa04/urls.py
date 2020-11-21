@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Cotação de Serviços Linguísticos {% endblock %}
+{% block head %}
+	<link 
+		rel="stylesheet" 
+		type="text/css" 
+		href = "{% static 'instantteste/css/proposta.css' %}"
+	>
+	<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">	
+	
+{% endblock %}
+
+{% block content %}
+	<div class="container-fluid">
+		<div class="container">
+	  		<div class="TamanhoConteudo mx-auto">
+				<div class="mx-auto">
+					{% if user.is_authenticated %}
+						<form method="POST" action="" id = "Form_2"> 
+							{% csrf_token %}
+							<fieldset>
+								<input type="hidden" name="id_ru" value="{{user.id}}">
+								{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+								<h2 class="text-center px-auto">Módulo de Cadastramento de Cláusulas</h2>
+								{{form.as_p }}
+								<div class="p-4 mx-auto">
+									<label for="editor">Conteúdo da cláusula</label>
+									<div id="editor" class="p-4 mx-auto">
+									
+									</div>
+								<div class="p-4 mx-auto">
+									<button type="button" class="btn btn-primary" onclick="PegaTexto()">Salvar</button>
+								</div>	
+							</fieldset>
+						</form>
+					{% else %}
+						<h1>Acesso Negado</h1>
+					{% endif %}
+				</div>
+			</div>
+			
+		</div>		  
+	</div>
+
+{% endblock %}
+
+{% block footer %}
+	<script 
+		src="{% static 'instantteste/js/link_desaparecer.js' %}"
+	>
+	</script>
+	<script 
+		src="{% static 'instantteste/js/iframe_src.js' %}"
+	>
+	</script>
+	<script 
+		src="https://cdn.quilljs.com/1.3.6/quill.js">
+	</script>
+	<script>
+
+		var quill = new Quill('#editor', {
+			modules: {
+				toolbar: [
+					[{ size: ['small', false, 'large', 'huge'] }],  // custom dropdown
+					[{ 'font': [] }],
+					['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+					[{ 'align': [] }],
+					[{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+					[{ 'list': 'ordered'}, { 'list': 'bullet' }],
+					['blockquote','image','video', 'code-block'],
+					[{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+					[{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+					['link'],
+					['clean']           
+				]
+			},
+			theme: 'snow'
+		});
+		function PegaTexto(){
+			let text = quill.getText();
+			let TextoHtml = document.getElementsByClassName('ql-editor')
+			let Input = document.getElementById("id_ConteudoClausula")
+			Input.value = TextoHtml[0].innerHTML
+		
+			if (TextoHtml[0].innerHTML=='<p><br></p>') {
+				alert("Escreva algo.");
+			}else {
+				$( "#Form_2" ).submit();
+				alert("Salvo");
+			}
+			
+		};
+	</script>			
+{% endblock %}
+
+	
