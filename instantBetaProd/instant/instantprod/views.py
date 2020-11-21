@@ -200,7 +200,7 @@ class CadastroView(APIView):
 		QueryBancoImagem = QueryPais.values("BancoImagem__Arquivo","BancoImagem__id")
 		QueryTipoId = TipoIdentificacao.objects.filter(CodigoIDezoitoN = 700, LanguageCode = LCid).order_by('Ordem')
 		muda = MudaContext()
-
+		muda.PaisesBandeiras()
 		context = {
 			'users': serializer,
 			'identificacao': identificacao,

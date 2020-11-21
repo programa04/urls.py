@@ -29,6 +29,6 @@ urlpatterns = [
 	path('idioma/cpf/<str:langcode>/', AjaxIdiomaCPF.as_view(), name='AjaxCPF'),
 	path('idioma/code/<str:langcode>/', AjaxIdiomaCode.as_view(), name='AjaxCode'),
 	path('idioma/codigopais/<str:langcode>/', AjaxCodigoPais.as_view(), name='AjaxCodigoPais'),
-
+	path('pmnt/id', AjaxPagamento.as_view(), name='ajaxpmnt'),
 ]
 urlpatterns += staticfiles_urlpatterns()

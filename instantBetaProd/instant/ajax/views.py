@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponse, JsonResponse
 from django.utils import timezone, translation
-
+import requests
+import xml.etree.ElementTree as ET
 
 # Create your views here.
 
@@ -2459,3 +2460,29 @@ class AjaxCodigoPais(View):
 		# print(alerta)
 
 		return HttpResponse(alerta)
+
+
+class AjaxPagamento(View):
+	email_pagseguro = "admsociedade@simoes.trd.br"
+	token_sandbox = "873C82585ECE4B678D1CDB6315C6FF5A"
+	token_pagseguro = ""
+	site_session = "https://ws.sandbox.pagseguro.uol.com.br/v2/sessions?email={email_pagseguro}&token={token}"
+
+	def get(self, request, *args, **kwargs):
+		site = self.site_session.format(
+			email_pagseguro=self.email_pagseguro,
+			token=self.token_sandbox
+		)
+
+		curl = requests.post(site)
+		teste = ET.fromstring(curl.text)
+		# print(teste.findtext('id'))
+		# session_id = str(curl.text).replace('<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?><session><id>', '')
+		# session_id = session_id.replace("</id></session>", '')
+		#  temporario
+		# print(session_id)
+		# print(json.JSONEncoder().encode({'id':session_id}))
+
+		return JsonResponse({'id': teste.findtext('id')})
+
+

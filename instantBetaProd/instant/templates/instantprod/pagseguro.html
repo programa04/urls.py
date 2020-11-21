@@ -1,0 +1,302 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% load l10n %}
+{% block title %} {% trans 'Payment' %} {% endblock %}
+{% block head %}
+	<style>
+		.button_join{
+			width: 152px;
+		}
+
+		.button_join:disabled{
+			color: #6D6E70;
+			background-color:  #00bfba; 
+			border: 1.6px solid  #6D6E70;
+		}
+
+		.button_join:enabled{
+			color: #FFFFFF;
+			background-color:  #00635F; 
+			border: 1.6px solid  #FFFFFF;
+		}
+
+		.btn_pag{
+			color: #FFFFFF;
+			background-color:  #00635F; 
+			border: 1.6px solid  #FFFFFF;
+		}
+
+		#cvv{
+			width: 80px;
+		}
+
+		#expirationMonth{
+			width: 80px;
+		}
+
+		#expirationYear{
+			width: 80px;
+		}
+
+		#FormDebito{
+			display: none;
+		}
+
+		.display-cartao{
+			display: block;
+		}
+
+		@media screen and (min-width: 750px) {
+			.display-cartao{
+				display: flex;
+			}
+		}
+
+
+	</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
+    <form action="" method="post" id="PagamentoForm" class="container-fluid">
+		<!-- NÃO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
+		{% csrf_token %}
+        <input type="hidden" name="code" value="0645DC3D0404F662247B3FB615B1E3F7" />
+		<input type="hidden" name="TokenCard" value="TokenCard" id="TokenCard" />
+		<input type="hidden" name="HashCard" value="HashCard" id="HashCard" />
+		<input type="hidden" name="Valor" value="Valor" id="Valor" />
+
+        <!-- <input type="image" src="https://stc.sandbox.pagseguro.uol.com.br/public/img/botoes/pagamentos/209x48-comprar-assina.gif" name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!" /> -->
+		
+		<img 
+			class = "mb-3 rounded mx-auto d-block" 
+			src="//assets.pagseguro.com.br/ps-integration-assets/banners/pagamento/todos_animado_550_50.gif"
+			alt="{% trans 'PagSeguro payment methods logos'%}" 
+			title="{% trans 'This site accepts payments with the main brands and banks, balance in PagSeguro account and boleto.'%}"
+		>
+
+		<div class="container-fluid p-3 mb-3 border border-white">
+
+			<div class="display-cartao justify-content-center">
+
+				<label 
+					class="btn btn_pag text-white border border-white"
+					for="TipoCredito"
+					data-toggle="collapse" 
+					data-target="#multiCollaps1" 
+					aria-expanded="false" 
+					aria-controls="multiCollaps1"
+				>{% trans 'Credit card'%}</label>
+				
+				<input 
+					id = "TipoCredito" 
+					class="invisible"
+					type="radio" 
+					value = "Cartão de Crédito" 
+					name = "FormaPagamento"
+					checked
+				>
+
+				<label 
+					for="TipoDebito"
+					class="btn btn_pag text-white border border-white"
+					data-toggle="collapse" 
+					data-target="#multiCollaps2" 
+					aria-expanded="false" 
+					aria-controls="multiCollaps2"
+				>{% trans 'Debit card'%}</label>
+
+				<input 
+					id = "TipoDebito"
+					class="invisible"
+					type="radio" 
+					value = "Cartão de Débito" 
+					name = "FormaPagamento"
+				>
+
+				<label 
+					for="TipoBoleto"
+					class="btn btn_pag text-white border border-white"
+					data-toggle="collapse" 
+					data-target="#multiCollaps3" 
+					aria-expanded="false" 
+					aria-controls="multiCollaps3"
+				>Boleto</label>
+
+				<input 
+					id = "TipoBoleto"
+					class="invisible"
+					type="radio"					 
+					value = "Boleto" 
+					name = "FormaPagamento"
+				>
+				
+				<!-- <button class="btn btn-link text-white border border-white" type="button" data-toggle="collapse" data-target="#multiCollaps1" aria-expanded="false" aria-controls="multiCollaps1">Cartão de Crédito</button>
+				<button class="btn btn-link text-white border border-white" type="button" data-toggle="collapse" data-target="#multiCollaps2" aria-expanded="false" aria-controls="multiCollaps1">Cartão de Débito</button>
+				<button class="btn btn-link text-white border border-white" type="button" data-toggle="collapse" data-target="#multiCollaps3" aria-expanded="false" aria-controls="multiCollaps1">Boleto</button> -->
+				<!-- <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollaps4" aria-expanded="false" aria-controls="multiCollaps1">Cartão de Crédito</button>
+				<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollaps5" aria-expanded="false" aria-controls="multiCollaps1">Cartão de Crédito</button> -->
+				
+			</div>
+
+			<div id = 'TipoPagamento'>
+				<div>
+					<div class="collapse" id="multiCollaps1" data-parent="#TipoPagamento">
+						<div class="card card-body text-info m-2" id = "CartaoCredito">
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="collapse" id="multiCollaps2" data-parent="#TipoPagamento">
+						<div class="card card-body text-info m-2" id = "CartaoDebito">
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="collapse" id="multiCollaps3" data-parent="#TipoPagamento">
+						<div class="card card-body text-info m-2" id = "Boleto">
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="collapse" id="multiCollaps4" data-parent="#TipoPagamento">
+						<div class="card card-body text-info m-2" id = "SaldoPagseguro">
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="collapse" id="multiCollaps5" data-parent="#TipoPagamento">
+						<div class="card card-body text-info m-2" id = "Deposito">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id = 'FormCredito'>
+			<select class = "invisible m-2" name="Parcelas" id="Parcelas"></select>
+
+			<div class="input-group mb-3">
+				<input type="text" name="cardNumber" id="cardNumber" class="form-control" placeholder="{% trans 'Card Number'%}" aria-label="{% trans 'Card Number'%}" aria-describedby="BandeiraCartao">
+				<div class="input-group-append">
+					<div class="input-group-text" id = 'BandeiraCartao'></div>
+				</div>
+			</div>
+	
+			<div class="input-group mb-3">
+				<input type="text" name="NomeCartao" id="NomeCartao" class="form-control" placeholder="{% trans 'Name printed on card'%}" aria-label="{% trans 'Name printed on card'%}">
+			</div>
+	
+			<div class="input-group mb-3">
+				<div class="input-group-append">
+					<div class="input-group-text" id = 'CPF'>
+						<select class="my-auto documents" name="TipoDocumento"></select>
+					</div>
+				</div>
+				<input type="text" name="CartaoCpf" id="CartaoCpf" class="form-control" aria-label="CPF" aria-describedby="CPF">
+			</div>
+	
+			<input type="hidden" name="brand" id="brand">
+			<div class="form-inline">
+	
+				<div class="m-2">
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" aria-label="{% trans 'Expiration Month'%}" name="expirationMonth" id="expirationMonth" value="12">
+						<div class="input-group-prepend">
+							<span class="input-group-text">{% trans 'Expiration Month'%}</span>
+						</div>
+					</div>
+				</div>
+				<div class="m-2">
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" aria-label="{% trans 'Expiration Year'%}" name="expirationYear" id="expirationYear" value="2030">
+						<div class="input-group-prepend">
+							<span class="input-group-text">{% trans 'Expiration Year'%}</span>
+						</div>
+					</div>
+				</div>
+				<div class="m-2">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text">{% trans 'CVV'%}</span>
+						</div>
+						<input type="text" class="form-control" aria-label="{% trans 'CVV'%}" name="cvv" id="cvv" value="123">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id = 'FormDebito'>
+			<div class="input-group mb-3">
+				<input type="text" name="cardNumber" id="debitcardNumber" class="form-control" placeholder="{% trans 'Card Number'%}" aria-label="{% trans 'Card Number'%}" aria-describedby="BandeiraCartao">
+				<div class="input-group-append">
+					<div class="input-group-text" id = 'BandeiraCartao'></div>
+				</div>
+			</div>
+	
+			<div class="input-group mb-3">
+				<input type="text" name="NomeCartao" id="NomeCartaodebito" class="form-control" placeholder="{% trans 'Name printed on card'%}" aria-label="{% trans 'Name printed on card'%}">
+			</div>
+	
+			<div class="input-group mb-3">
+				<div class="input-group-append">
+					<div class="input-group-text" id = 'CPFdebito'>
+						<select class="my-auto documents" name="TipoDocumento"></select>
+					</div>
+				</div>
+				<input type="text" name="CartaoCpf" id="CartaodebitoCpf" class="form-control" aria-label="CPF" aria-describedby="CPF">
+			</div>
+	
+			<input type="hidden" name="brand" id="branddebit">
+			<div class="form-inline">
+	
+				<div class="m-2">
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" aria-label="{% trans 'Expiration Month'%}" name="expirationMonth" id="expirationMonthdebit" value="12">
+						<div class="input-group-prepend">
+							<span class="input-group-text">{% trans 'Expiration Month'%}</span>
+						</div>
+					</div>
+				</div>
+				<div class="m-2">
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" aria-label="{% trans 'Expiration Year'%}" name="expirationYear" id="expirationYeardebit" value="2030">
+						<div class="input-group-prepend">
+							<span class="input-group-text">{% trans 'Expiration Year'%}</span>
+						</div>
+					</div>
+				</div>
+				<div class="m-2">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text">{% trans 'CVV'%}</span>
+						</div>
+						<input type="text" class="form-control" aria-label="{% trans 'CVV'%}" name="cvv" id="cvvdebit" value="123">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id = 'FormBoleto'>
+
+		</div>
+
+
+		<button id = "ConfirmarPagamento" type="button" class="btn btn_pag">{% trans 'Pay'%}</button>
+
+	</form>
+<!-- FINAL FORMULARIO BOTAO PAGSEGURO -->
+
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}
+
+{% block script %}
+
+    <script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js"></script>
+    <script>src="{% static 'instantprod/js/pagseguro.js' %}"</script>
+
+{% endblock %}
