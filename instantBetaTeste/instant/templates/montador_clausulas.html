@@ -1,0 +1,46 @@
+{% for N in Clausulas %}
+	<div class="p-5 bd-highlight border border-light m-3">
+		<h4>ID da Clausulas:</h4>
+		<p>{{N.id}}</p>
+		<h4>Nome da cláusula:</h4>
+		<p>{{N.NomeClausula}}</p>
+		<h4>Comentário sobre a cláusula:</h4>
+		<p>{{N.ComentarioClausula}}</p>
+		<h4>Língua da cláusula: </h4>
+		<p>{{N.LinguaPais.Lingua}}</p>
+		<h4>Tipo de cláusula: </h4>
+		<p>{{N.TipoClausula}}</p>
+		<h4>Posição da cláusula no documento:</h4>
+		<p>{{N.PosicaoDocumento}}</p>
+		<h4>Tipo de documento: </h4>
+		{% for Dado in N.TipoDocumento.all %}
+			<p>{{Dado}}</p>
+		{% endfor %}
+		<h4>Título: </h4>
+		{% for Dado in N.Titulo.all %}
+			<p>{{Dado}}</p>
+		{% endfor %}
+		<h4>Subtítulo do serviço: </h4>
+		{%for Dado in N.SubTituloServico.all %}
+			<p>{{Dado}}</p>
+		{% endfor %}
+		<h4>Subtítulo do cargo: </h4>
+		{% for Dado in N.SubTituloCargo.all %}
+			<p>{{Dado}}</p>
+		{% endfor %}
+		<h4> Data de Cadastro:</h4>
+		<p>{{N.Data}} </p>
+		<h4>Conteudo:</h4>
+		<div class="embed-responsive embed-responsive-21by9">
+			<iframe 
+				class="embed-responsive-item"
+				height="1200" 
+				width="600" 
+				srcdoc= "{{N.ConteudoClausula}}" 
+				sandbox="allow-popups allow-same-origin allow-scripts allow-top-navigation"
+			>
+			</iframe>
+		</div>
+	</div>
+
+{% endfor %}

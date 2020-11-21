@@ -1,0 +1,96 @@
+$(document).ready(function(){
+  $(".r1").click(function(){
+    $("#R2").hide();
+    $("#R3").hide();
+    $("#R4").hide();
+    $("#R5").hide();
+    $("#R6").hide();
+    $("#R7").hide();
+    $("#R8").hide();
+    $("#R1").show();
+  });
+});
+$(document).ready(function(){
+  $(".r2").click(function(){
+    $("#R1").hide();
+    $("#R3").hide();
+    $("#R4").hide();
+    $("#R5").hide();
+    $("#R6").hide();
+    $("#R7").hide();
+    $("#R8").hide();
+    $("#R2").show();
+  });
+});
+$(document).ready(function(){
+  $(".r3").click(function(){
+    $("#R1").hide();
+    $("#R2").hide();
+    $("#R4").hide();
+    $("#R5").hide();
+    $("#R6").hide();
+    $("#R7").hide();
+    $("#R8").hide();
+    $("#R3").show();
+  });
+});
+$(document).ready(function(){
+  $(".r4").click(function(){
+    $("#R1").hide();
+    $("#R2").hide();
+    $("#R3").hide();
+    $("#R5").hide();
+    $("#R6").hide();
+    $("#R7").hide();
+    $("#R8").hide();
+    $("#R4").show();
+  });
+});
+$(document).ready(function(){
+  $(".r5").click(function(){
+    $("#R1").hide();
+    $("#R2").hide();
+    $("#R3").hide();
+    $("#R4").hide();
+    $("#R6").hide();
+    $("#R7").hide();
+    $("#R8").hide();
+    $("#R5").show();
+  });
+});
+$(document).ready(function(){
+  $(".r6").click(function(){
+    $("#R1").hide();
+    $("#R2").hide();
+    $("#R3").hide();
+    $("#R4").hide();
+    $("#R5").hide();
+    $("#R7").hide();
+    $("#R8").hide();
+    $("#R6").show();
+  });
+});
+$(document).ready(function(){
+  $(".r7").click(function(){
+    $("#R1").hide();
+    $("#R2").hide();
+    $("#R3").hide();
+    $("#R4").hide();
+    $("R5").hide();
+    $("#R6").hide();
+    $("#R8").hide();
+    $("#R7").show();
+  });
+});
+$(document).ready(function(){
+  $(".r8").click(function(){
+    $("#R1").hide();
+    $("#R2").hide();
+    $("#R3").hide();
+    $("#R4").hide();
+    $("#R5").hide();
+    $("#R6").hide();
+    $("#R7").hide();
+    $("#R8").show();
+  });
+});

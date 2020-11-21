@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Cadastro{% endblock %}
+	
+{% block head %}
+	<script 
+		src = "{% static 'instantprod/js/data.js' %}"
+	>
+	</script>
+{% endblock %}
+{% block content %}
+	<div class="cadastro mx-auto">
+		<section class="mx-auto">
+			<h1>Conclua sua inscrição</h1>
+			<form method="POST" action="{% url 'Cadastro' %}">
+				{% csrf_token %}
+				{% if user.is_authenticated %}
+					<input type="hidden" name="id_ru" value="{{user.id}}">
+				{% endif %}
+				{{ form.as_p }}
+				<br>
+				
+				<button class="btn btn-primary"  type="submit"> Guardar</button>
+						
+			</form>
+		</section>	
+	</div>
+	
+	
+{% endblock %}

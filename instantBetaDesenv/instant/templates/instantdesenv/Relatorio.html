@@ -1,0 +1,76 @@
+{% extends "RelatorioBase.html" %}
+{% load static %}
+{% block head %}
+	<style type="text/css">
+
+		body {
+			background-color : #008C88;
+			color : white;
+		}
+	
+	</style>
+{% endblock %}
+{% block content %}
+	<div 
+		class="Relatorio"
+	>
+		<section>
+			<h1>Relatório de Diagnóstico para <strong>{{relatorio_tipo}}</strong></h1>
+			<form method="POST" action= "">
+				{% csrf_token %}
+				<input type="hidden" name= "TipodeServico" value="{{relatorio_tipo}}">
+				
+				<input type="hidden" name="IdProposta" value="{{idpedido}}">
+				
+				<label for="LingPartida">Língua de partida</label>
+				<input list="LingPartida" name="LingPartida" autocomplete="off" required>
+				<datalist id="LingPartida">
+
+					{% for i in ling %}
+						<option value="{{i}}">
+					{% endfor %}
+
+				</datalist>
+				<br>
+				<label for="LingChegada">Língua de chegada</label>
+				<input list="LingChegada" name="LingChegada" autocomplete="off" required>
+				<datalist id="LingChegada">
+
+					{% for i in ling %}
+						<option value="{{i}}">
+					{% endfor %}
+
+				</datalist>
+				<br>
+				<label for="Dominio1">Domínio 1 (Área de conhecimento do serviço)</label>
+				<input list="Dominio1" name="Dominio1" autocomplete="off" required>
+				<datalist id="Dominio1">
+
+					{% for i in dominio1 %}
+						<option value="{{i}}">
+					{% endfor %}
+
+				</datalist>
+				<br>
+				<label for="Dominio2">Domínio 2 (Atividade econômica do serviço)</label>
+				<input list="Dominio2" name="Dominio2" autocomplete="off" required>
+				<datalist id="Dominio2">
+
+					{% for i in dominio2 %}
+						<option value="{{i}}">
+					{% endfor %}
+
+				</datalist>
+				<br>
+		
+				{{ form.as_p }}
+				
+				<br>
+				<button class="btn btn-info"  type="submit"> Guardar</button>
+				<br>
+			
+			</form>
+
+		</section>			
+	</div>
+{% endblock %}

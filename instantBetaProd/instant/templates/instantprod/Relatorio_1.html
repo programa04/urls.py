@@ -1,0 +1,189 @@
+{% extends "RelatorioBase.html" %}
+{% load static %}
+{% block head %}
+	<style type="text/css">
+
+		body {
+			background-color : #0247FE;
+			color : white;
+		}
+
+	</style>
+{% endblock %}
+{% block content %}
+	<div 
+		class="Relatorio1"
+	>
+		<section>
+			<h1>Relatório de Diagnóstico para <strong>{{relatorio_tipo}}</strong></h1>
+			<form method="POST" action= "" >
+				{% csrf_token %}
+				<input type="hidden" name= "TipodeServico" value="{{relatorio_tipo}}">
+				
+				<input type="hidden" name="IdProposta" value="{{idpedido}}">
+				
+				<label for="LinguaConferencia">
+					Língua da conferência
+				</label> 
+				<p>Principal língua a ser utilizada na conferência</p>
+				<input 
+					list="LinguaConferencia" 
+					name="LinguaConferencia" 
+					autocomplete="off"
+					required
+				>
+				<datalist id="LinguaConferencia">
+
+					{% for i in ling %}
+						<option value="{{i}}">
+					{% endfor %}
+
+				</datalist>
+				<br>
+				<br>
+
+				<label for="Dominio1">
+					Domínio 1 (Área de conhecimento do serviço)
+				</label>
+				<input list="Dominio1" name="Dominio1" autocomplete="off" required>
+				<datalist id="Dominio1">
+
+					{% for i in dominio1 %}
+						<option value="{{i}}">
+					{% endfor %}
+
+				</datalist>
+				<br>
+				<br>
+				<label for="Dominio2">
+					Domínio 2 (Atividade econômica do serviço)
+				</label>
+				<input list="Dominio2" name="Dominio2" autocomplete="off" required>
+				<datalist id="Dominio2">
+
+					{% for i in dominio2 %}
+						<option value="{{i}}">
+					{% endfor %}
+
+				</datalist>
+				<br>
+				<br>
+				<label for="LingPartida">
+					Língua de partida (Informações da Interpretação)
+				</label>
+				<input list="LingPartida" name="LingPartida" autocomplete="off" required>
+				<datalist id="LingPartida">
+
+					{% for i in ling %}
+						<option value="{{i}}">
+					{% endfor %}
+
+				</datalist>
+				<br>
+				<br>
+				<label for="LingChegada">
+					Língua de chegada (Informações da Interpretação)
+				</label>
+				<input list="LingChegada" name="LingChegada" autocomplete="off" required>
+				<datalist id="LingChegada">
+
+					{% for i in ling %}
+						<option value="{{i}}">
+					{% endfor %}
+
+				</datalist>
+				<br>
+				<br>
+				<label for="CoordenadorBilingue">
+					Caso Necessite de Intérprete(s) Coordenador(es) bilíngue, Defina a Língua
+				</label>
+				<input list="CoordenadorBilingue" name="CoordenadorBilingue" autocomplete="off">
+				<datalist id="CoordenadorBilingue">
+
+					{% for i in ling %}
+						<option value="{{i}}">
+					{% endfor %}
+
+				</datalist>
+				<br>
+				<br>
+				<label for="RecepcionistaBilingue">
+					Caso Necessite de Recepcionista(s) de Eventos bilíngue, Defina a Língua
+				</label>
+				<input list="RecepcionistaBilingue" name="RecepcionistaBilingue" autocomplete="off">
+				<datalist id="RecepcionistaBilingue">
+
+					{% for i in ling %}
+						<option value="{{i}}">
+					{% endfor %}
+
+				</datalist>
+
+				<br>
+				<br>
+				<label for="OperadorSomBilingue">
+					Caso Necessite de Técnico(s) e Operador(es) de Som bilíngue(s), Defina a Língua
+				</label>
+				<input list="OperadorSomBilingue" name="OperadorSomBilingue" autocomplete="off">
+				<datalist id="OperadorSomBilingue">
+
+					{% for i in ling %}
+						<option value="{{i}}">
+					{% endfor %}
+
+				</datalist>
+
+				<br>
+				<br>
+				<label for="TraducaoTranscricao">
+					Caso Necessite da Tradução da transcrição do áudio da Interpretação gravada, Defina a Língua
+				</label>
+				<input list="TraducaoTranscrica" name="TraducaoTranscrica" autocomplete="off">
+				<datalist id="TraducaoTranscrica">
+
+					{% for i in ling %}
+						<option value="{{i}}">
+					{% endfor %}
+
+				</datalist>
+
+				<br>
+				<br>
+				<label for="TraducaoLegendagem">
+					Caso Necessite da Tradução da legendagem do áudio da Interpretação gravada, Defina a Língua
+				</label>
+				<input list="TraducaoLegendagem" name="TraducaoLegendagem" autocomplete="off">
+				<datalist id="TraducaoLegendagem">
+
+					{% for i in ling %}
+						<option value="{{i}}">
+					{% endfor %}
+
+				</datalist>
+		
+				{{ form.as_p }}
+				
+				{% if form.errors %}
+					{% for field in form %}
+						{% for error in field.errors %}
+							<div class="alert alert-danger">
+								<strong>{{ error|escape }}</strong>
+							</div>
+						{% endfor %}
+					{% endfor %}
+					{% for error in form.non_field_errors %}
+						<div class="alert alert-danger">
+							<strong>{{ error|escape }}</strong>
+						</div>
+					{% endfor %}
+				{% endif %}
+				<br>
+				<br>
+				<button class="btn btn-info"  type="submit"> Guardar</button>
+				<br>
+			
+			</form>
+
+		</section>			
+	</div>
+{% endblock %}

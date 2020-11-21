@@ -1,0 +1,225 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% load l10n %}
+{% load rest_framework %}
+{% block title %}{% endblock %}
+{% block head %}
+
+	<!-- Custom styles for this template -->
+
+{% endblock %}
+
+{% block content %}
+
+    <form class="form-horizontal" action="" method="post" novalidate>
+            {% csrf_token %}
+            <div class="form-group">
+                <div class="mx-auto">
+
+    <div class="form-group ">
+
+    <label class="col-sm-2 control-label ">
+      DDI
+    </label>
+
+  <div class="col-sm-10">
+    <input name="CodigoDiscagemInternacional" class="form-control" type="text"  value="" >
+  </div>
+
+</div>
+
+<div class="form-group">
+
+  <div class="col-sm-10">
+    {% render_field contato.TipoContato style=style %}
+    </select>
+
+  </div>
+</div>
+
+
+
+<div class="form-group">
+
+    <label class="col-sm-2 control-label ">
+      Pais
+    </label>
+
+
+  <div class="col-sm-10">
+      <select class="form-control" name="Pais">
+          {% for dado in pais %}
+              <option value="{{ dado.id }}">{{ dado.Nome }}</option>
+          {% endfor %}
+      </select>
+
+
+  </div>
+</div>
+
+
+
+
+
+
+<div class="form-group">
+
+
+
+  <div class="col-sm-10">
+      {% render_field contato.Cidade style=style %}
+
+  </div>
+</div>
+
+
+
+
+
+
+<div class="form-group">
+
+
+  <div class="col-sm-10">
+      {% render_field contato.TipoOpTelefonia style=style %}
+
+
+  </div>
+</div>
+
+
+
+
+    <div class="form-group ">
+
+    <label class="col-sm-2 control-label ">
+      DDD
+    </label>
+
+
+  <div class="col-sm-10">
+    <input name="CodigoDiscagemNacional" class="form-control" type="number"  value="" >
+
+
+
+
+  </div>
+</div>
+
+
+
+
+    <div class="form-group ">
+
+    <label class="col-sm-2 control-label ">
+      Identificação
+    </label>
+
+  <div class="col-sm-10">
+    <input name="Identificacao" class="form-control" type="text"  value="" >
+
+  </div>
+</div>
+
+    <div class="form-group ">
+
+    <label class="col-sm-2 control-label ">
+      Ramal
+    </label>
+  <div class="col-sm-10">
+    <input name="Ramal" class="form-control" type="text"  value="" >
+
+  </div>
+</div>
+
+    <div class="form-group ">
+
+    <label class="col-sm-2 control-label ">
+      Nome para Recado
+    </label>
+
+  <div class="col-sm-10">
+    <input name="NomeRecado" class="form-control" type="text"  value="" >
+
+  </div>
+</div>
+
+
+
+
+    <div class="form-group horizontal-checkbox ">
+
+    <label class="col-sm-2 control-label ">
+      Principal
+    </label>
+
+
+  <div class="col-sm-10">
+    <input type="checkbox" name="Principal" value="true" >
+
+
+
+
+  </div>
+</div>
+
+
+
+
+    <div class="form-group horizontal-checkbox ">
+
+    <label class="col-sm-2 control-label ">
+      Não exibir contato
+    </label>
+
+
+  <div class="col-sm-10">
+    <input type="checkbox" name="NaoExibirContato" value="true" >
+
+  </div>
+</div>
+
+                </div>
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Submit!</button>
+                </div>
+            </div>
+    </form>
+
+
+{% endblock %}
+
+{% block script %}
+	<script>
+
+		$("#registration_form_submit").click( function(){
+
+            let form_data = $("#form_reg").serializeArray()
+            let data = {}
+
+            form_data.forEach(function (element, index, array){
+                data[element.name] = element.value
+            });
+            //delete data.csrfmiddlewaretoken
+            console.log(data)
+
+            $.ajax({
+				method: "POST",
+				url: '/instantAPI/users/',
+				dataType: 'json',
+                beforeSend: function (xhr, settings) {
+                    xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+                },
+                data: JSON.stringify(data),
+				success: function( data ) {
+					console.log(data)
+					console.log('Funcionou')
+				},
+				processData: false,
+                contentType: 'application/json'
+			});
+		});
+	</script>
+{% endblock %}
+

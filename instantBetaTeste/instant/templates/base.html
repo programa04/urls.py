@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+{% load static %}
+{% load i18n %}
+{% load l10n %}
+{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{LANGUAGE_CODE}}">
+  <head>
+	<!-- Required meta tags -->
+	<title> Instant - {% block title %} {% endblock %}</title>
+	<meta charset="UTF-8">
+	<meta name="description" content = "Instant">
+	<meta name="keywords" content="formulario, Instant, tradução, interpretação, idioma, cliente, comercial">
+	<meta name="author" content="Simões Tradução, Interpretação & Idiomas">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<style>
+		
+		html{
+			height: 100%;
+		}
+
+		body {
+			background-color: #008C88;
+			color: white;
+		}
+
+		@font-face {
+			font-family: MyriadPro;
+			src: url("{% static 'fonts/myriadpro.ttf' %}") format('truetype');
+		} 
+
+		@font-face {
+			font-family: DilleniaUPC;
+			src: url("{% static 'fonts/upcdb.ttf' %}") format('truetype');
+		} 
+
+		select{
+			color: white;
+			background-color: #00635F;
+			text-align: center;
+			border: 1.6px solid #00bfba;	
+			padding: 3.2px;
+			width: 100%;
+			overflow: hidden;
+		}
+
+		.clearfix:before, .clearfix:after {
+			content: " ";
+			display: table;
+		}
+
+		.clearfix:after {
+			clear: both;
+		}
+
+		.clearfix {
+			*zoom: 1;
+		}
+
+		h1, p{
+			font-family: MyriadPro;
+			align-self: center;
+			margin-top: auto;
+			margin-bottom: auto;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		
+		.locale{
+			display: inline-block;
+			width: 100%;
+			text-align: center;
+			align-items: center;
+			padding-top: 1px;
+			padding-bottom: 5.12px;
+		}
+
+		.locale_busca{
+			display: inline-block;
+			width: 100%;
+			align-items: center;
+			text-align: center;
+			padding-top: 1px;
+			padding-bottom: 5.12px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		
+		.locale_fundo{
+			background-color: #00635F;
+			width: 100%;
+			height: 33.6px;
+			overflow-y: scroll;
+			align-items: center;
+		}
+
+		/* width */
+		.locale_fundo::-webkit-scrollbar {
+			width: 4px;
+			height: 4px;
+		}
+		
+		/* Track */
+		.locale_fundo::-webkit-scrollbar-track {
+			background: #00635F; 
+		}
+		
+		/* Handle */
+		.locale_fundo::-webkit-scrollbar-thumb {
+			background: #00635F; 
+		}
+		
+		/* Handle on hover */
+		.locale_fundo::-webkit-scrollbar-thumb:hover {
+			background: #00635F; 
+		}
+
+		.locale_link{
+			font-family: MyriadPro;
+			font-size: 1em;
+			color: #00bfba;
+			text-decoration: none;
+			text-align: center;
+			align-items: center;
+		}
+
+		.locale_link:hover{
+			color: #008C88;
+		}
+
+		.locale_selecionado{
+			font-family: MyriadPro;
+			font-size: 1em;
+			color: #FFFFFF;
+			text-decoration: none;
+			text-align: center;
+			align-items: center;
+		}
+
+		.locale_selecionado:hover{
+			color: #008C88;
+		}
+
+		.bandeiras{
+			float: none;
+			width: 28px; 
+			height: 24px; 
+			margin-top: auto;
+			margin-bottom: auto;
+			margin-left: 1.6px;
+		}
+
+		.footer_fundo{
+			background-image: url("{% static 'instantteste/img/oie_transparent.png' %}");
+			background-size: 50% 110%;
+			background-repeat: repeat;
+			background-color: #00635F;
+		}
+
+		.footer {
+			position:absolute;
+			bottom:0;
+			width:100%;
+		}
+
+		.logo{
+			width: 80%;
+			display: block;
+		}
+
+		/* width */
+		::-webkit-scrollbar {
+			width: 16px;
+			display: none;
+		}
+		
+		/* Track */
+		::-webkit-scrollbar-track {
+			background: #008C88; 
+			display: none;
+		}
+		
+		/* Handle */
+		::-webkit-scrollbar-thumb {
+			background: #888; 
+		}
+		
+		/* Handle on hover */
+		::-webkit-scrollbar-thumb:hover {
+			background: #555; 
+		}
+   
+		.redes_sociais{
+			display: inline-block;
+			width: 32px;
+			margin-left: 4px;
+			margin-right: auto;
+		}
+
+		#botao_busca{
+			height: 24px;
+			width: 80%;
+			margin-top: 4.8px;
+			text-align: center;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		#caixa_info{
+			color: #00bfba;
+			background-color:  #00635F;
+			border: 1.6px solid  #00bfba;
+		}
+
+		.traducao{
+			font-family: DilleniaUPC;
+			font-weight: bold;
+			font-size: 2.1em;
+		}
+
+		.form-signin{
+			width: 85%;
+		}
+
+		#documents{
+			display: inline;
+		}
+
+		#submit_button_join{
+			width: 136px;
+		}
+
+		#submit_button_join:disabled{
+			color: #6D6E70;
+			background-color:  #00bfba; 
+			border: 25.6px solid  #6D6E70;
+		}
+
+		#submit_button_join:enabled{
+			color: #FFFFFF;
+			background-color:  #00635F; 
+			border: 25.6px solid  #FFFFFF;
+		}
+
+		#aviso_form{
+			color: #00bfba;
+			background-color: #00635F;
+			border: 25.6px solid  #00bfba;
+		}
+
+		#aviso{
+			color: #00bfba;
+			background-color:  #00635F; 
+			border: 25.6px solid  #00bfba;
+		}
+
+		.Mpro{
+			font-family: MyriadPro;
+		}
+		
+		.Dillenia{
+			font-family: DilleniaUPC;
+		}
+
+		.tamanho_08em{
+			font-size: 0.8em;
+		}
+
+		.tamanho_07em{
+			font-size: 0.7em;
+		}
+
+		.tamanho_06em{
+			font-size: 0.6em;
+		}
+
+		.tamanho_05em{
+			font-size: 0.5em;
+		}
+
+		.tamanho_04em{
+			font-size: 0.4em;
+		}
+
+		.link{
+			display: block;
+			position: relative;
+			font-family: MyriadPro;
+			color: #00bfba;
+			-webkit-text-decoration-line: underline; /* Safari */
+			text-decoration-line: underline; 
+			width: 100%;
+			text-align: center;
+		}
+
+		.link:hover{
+			color: #008C88;
+		}
+
+		.img-contato{
+			width: 51.2px;
+		}
+
+		.links_linha_vertical{
+			display: none;
+		}
+
+		.links_linha_horizontal{
+			width: 100%;
+			height: 0.16px;
+		}
+
+		.tam_footer_img{
+			width: 10%;
+			overflow: initial;
+			margin-left: 43.2px;
+		}
+
+		.section_redes{
+			width: 65%;
+		}
+
+		.tam_footer_num{
+			position: absolute;
+			width: auto;
+			margin-left: 99.2px;
+		}
+
+		.sumir_mobile{
+			display: none;
+		}
+
+		.mobile-100{
+			width: 100%;
+		}
+
+		.mobile-45{
+			width: 45%;
+		}
+
+		.input_codigo{
+			display: inline-block;
+		}
+
+		.dropcolor{
+			color: white;
+			border: 1.6px solid #00bfba;
+			background-color: #00635F;
+			text-align: left;
+		}
+
+		.country_code{
+			width: 100%;
+			text-align: left;
+			padding-left: 3.2px;
+		}
+
+		.country_code:hover{
+			border: 1.6px solid #00bfba;
+		}
+
+		.beta{
+			position: absolute;	
+			top: 63%;
+			left: 78%;		
+		}
+
+		@media screen and (min-width: 750px) {
+
+			.beta{
+				position: absolute;	
+				top: 63%;
+				left: 57.5%;		
+			}
+
+			.scroll_country_code{
+				overflow-y: scroll;
+				width: 264px;
+				height: 128px;
+			}
+
+			.redes_sociais{
+				display: inline-block;
+				width: 32px;
+				margin-left: 0px;
+				margin-right: 0px;
+			}
+
+			.section_redes{
+				width: 100%;
+			}
+
+			.mobile-100{
+				width: 23%;
+			}
+
+			.mobile-45{
+				width: auto;
+			}
+
+			::-webkit-scrollbar {
+				width: 8px;
+				display:flex;
+			}
+			
+			/* Track */
+			::-webkit-scrollbar-track {
+				background: #008C88; 
+				display: flex;
+			}
+
+			.link{
+				display: inline-block;
+				font-family: MyriadPro;
+				color: #00bfba;
+				-webkit-text-decoration-line: underline; /* Safari */
+				text-decoration-line: underline; 
+				margin-left: 1.6px;
+				margin-right: 1.6px;
+				text-align: start;
+			}	
+
+			.sumir_mobile{
+				display: inherit;
+			}
+
+			.img-contato{
+				width: 51.2px;
+			}	
+
+			.logo{
+				width: 20%;
+				display: block;
+			}
+
+			.tam_footer_img{
+				width: 51.2px;
+				height: 51.2px;
+				margin-left: 1.6px;
+			}
+
+			.tam_footer_num{
+				position: relative;
+				height:100%;
+				width: 160px;
+				margin-left: 16px;
+			}
+
+			.links_linha_vertical{
+				display: block;
+				width: 0.16px;
+				height: 64px;
+				opacity: 0.4;
+				background-color: #00bfba;
+			}
+
+			.links_linha_horizontal{
+				width: 100%;
+				height: 0.16px;
+			}
+
+			#botao_busca{
+				height: 1.5em;
+				width: 5%;
+				margin-top: 4.8px;
+			}
+
+			.form-signin{
+				width: 464px;
+			}
+
+			.bandeiras{
+				float: none;
+				width: 20.8px; 
+				height: 12px; 
+				margin-top: auto;
+				margin-bottom: auto;
+			}
+
+			.locale{
+				display:inline;
+				text-align: left;
+				align-items: normal;
+				padding-top: 3.2px;
+				padding-bottom: 3.2px;
+			}
+
+			.locale_busca{
+				display:inline;
+				text-align: left;
+				align-items: normal;
+				padding-top: 3.2px;
+				padding-bottom: 3.2px;
+			}
+
+			.locale_fundo{
+				background-color: #00635F;
+				width: 100%;  
+				white-space: nowrap;  
+				overflow-x: auto;
+				overflow-y: hidden;  
+				align-items: flex-start;
+			}
+
+			.locale_link{
+				font-size: 11.76px;
+				font-family: MyriadPro;
+				color: #00bfba;
+				text-decoration: none;
+				text-align: center;
+				align-items: center;
+				padding-left: 3.2px;
+				padding-right: 3.2px;
+				padding-top: 3.2px;
+				padding-bottom: 3.2px;
+			}
+
+			.locale_selecionado{
+				font-size: 11.76px;
+				font-family: MyriadPro;
+				color: #FFFFFF;
+				text-decoration: none;
+				text-align: center;
+				align-items: center;
+				padding-left: 3.2px;
+				padding-right: 3.2px;
+				padding-top: 3.2px;
+				padding-bottom: 3.2px;
+			} 
+
+		} 
+
+	</style>
+
+	{% block head %}
+
+	{% endblock %}
+
+</head>
+  <body>
+	<header>
+		
+		<div class="locale_fundo">
+			{% for Dado in request.GET.Bandeiras %}
+				{% if Dado.Nome in LANGUAGE_CODE %}
+					<span class="locale">
+						<a 
+							id="locale_selecionado"
+							class="locale_selecionado" 
+							href= "/{{Dado.Nome}}/{{request.GET.url}}"
+							hreflang="{{Dado.Nome}}" 
+						>
+							{{Dado.NomeOriginal}} 
+							<img
+								class="bandeiras"
+								src="data:image/png;base64, {{Dado.Arquivo}}" 
+								alt="{{Dado.NomeOriginal}}" 
+							/>
+						</a>
+					</span> 
+						
+				{% else %}
+					<span class="locale">
+						<a
+							class="locale_link" 
+							href= "/{{Dado.Nome}}/{{request.GET.url}}" 
+							hreflang="{{Dado.Nome}}"
+						>
+						{{Dado.NomeOriginal}}
+							<img
+								class="bandeiras"
+								src="data:image/png;base64, {{Dado.Arquivo}}" 
+								alt="{{Dado.NomeOriginal}}" 
+							/>
+						</a>
+					</span>
+						 
+				{% endif %}
+	
+			{% endfor %}
+			<span class="locale_busca">
+				<input 
+					type="text" 
+					id = "botao_busca"
+					placeholder="Buscar"
+				>
+			</span>  
+		</div>
+
+		<ul class="nav nav-tabs justify-content-end">
+			<li class="nav-item">
+				<a class="nav-link text-white" href= "">{% trans 'Start' %}</a>
+			</li>
+			{% if user.is_authenticated %}
+				<li class="nav-item">
+					<a class="nav-link text-white" href="{% url 'logout' %}">{% trans 'Logout' %}</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link disabled text-white" href="#">{% trans 'Welcome' %}, {{user.last_name}}</a>
+				</li>
+			{% else %}
+				<li class="nav-item">
+					<a class="nav-link text-white" href="{% url 'login' %}">{% trans 'Log in' %}</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-white" href="">{% trans 'Sign up' %}</a>
+				</li>
+			{% endif %}
+
+		</ul>
+
+		<div class="position-relative">
+			<img 
+				src= "{% static 'instantteste/img/logobranco.png' %}"
+				alt="instant logo branco" 
+				class="mx-auto logo"
+			>
+			<p class="beta">Beta</p>
+		</div>
+		
+		<h3 class="text-center traducao">{% trans 'QUOTATION OF LINGUISTIC SERVICES' %}</h3>
+
+		{% block header %}
+
+		{% endblock %}
+			
+	</header>
+
+	<main class="container">
+		{% block content %}
+		
+		{% endblock %}
+	</main>	
+	
+	<footer id = 'Mpro' >
+		<div class="mt-3 footer_fundo">
+			
+			{% block footer %}
+			
+			{% endblock %}
+			<div class="container mx-auto text-white">
+				<div class="row">
+
+					<div class="col-md-auto my-2 p-0 mobile-100">
+						<div class="container p-0">
+							<div class="row justify-content-start">
+								<div class="col-md-auto m-0 p-0 mobile-45">
+									<a
+										href="http://instant.simoes.trd.br/" 
+										target="_blank" 
+										rel="noopener noreferrer"
+										class="link tamanho_08em"
+									>
+									{% trans 'Instant'%}
+									</a>
+									
+								</div>
+								<strong class="sumir_mobile">/</strong>
+								<div class="col-md-auto m-0 p-0 text-left mobile-45">
+									<a 
+										href="http://suporte.simoes.trd.br/" 
+										target="_blank" 
+										rel="noopener noreferrer"
+										class="link tamanho_08em"
+									>
+									{% trans 'Support' %}
+									</a>
+									
+								</div>
+								<strong class="sumir_mobile">/</strong>
+								<div class="col-md-auto m-0 p-0 mobile-45">
+									<a 
+										href="http://cat.simoes.trd.br/" 
+										target="_blank" 
+										rel="noopener noreferrer"
+										class="link tamanho_08em"
+									>
+									{% trans 'CAT' %}
+									</a>
+		
+								</div>
+								
+								<div class="w-100 sumir_mobile"></div>
+								
+								<div class="col-sm-auto m-0 p-0 mobile-45">
+									<a 
+										href="http://projetos.simoes.trd.br/" 
+										target="_blank" 
+										rel="noopener noreferrer"
+										class="link tamanho_08em"
+									>
+									{% trans 'Projects' %}
+									</a>
+									
+								</div>
+								<strong class="sumir_mobile">/</strong>
+								<div class="col-sm-auto m-0 p-0 mobile-45">
+									<a 
+									href="http://erp.simoes.trd.br/" 
+									target="_blank" 
+									rel="noopener noreferrer"
+									class="link tamanho_08em"
+								>
+								{% trans 'ERP' %}
+								</a>
+								
+								</div>
+								<strong class="sumir_mobile">/</strong>
+								<div class="col-sm-auto m-0 p-0 mobile-45">
+									<a 
+									href="http://ead.simoes.trd.br/" 
+									target="_blank" 
+									rel="noopener noreferrer"
+									class="link tamanho_08em"
+								>
+								{% trans 'e-learning' %}
+								</a>
+
+								</div>
+								
+								<div class="w-100 sumir_mobile"></div>
+
+								<div class="col-sm-auto m-0 p-0 mobile-45">
+									<a 
+									href="http://meuholerite.com.br/" 
+									target="_blank" 
+									rel="noopener noreferrer"
+									class="link tamanho_08em"
+									>
+									{% trans 'Paycheck' %}
+									</a>
+
+								</div>
+								<strong class="sumir_mobile sumir_mobile">/</strong>
+								<div class="col-sm-auto m-0 p-0 mobile-45">
+									<a 
+										href="https://www.simoes.trd.br/restrita-principal" 
+										target="_blank" 
+										rel="noopener noreferrer"
+										class="link tamanho_08em"
+									>
+									{% trans 'Restricted Area' %}
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="links_linha_vertical mr-3 mt-3"></div>
+
+					<div class="col-md-auto my-2 p-0">
+				
+						<div class="row">
+							<div class="col-md-auto mx-2 p-0">
+								<a 
+									href="https://www.simoes.trd.br/termos" 
+									target="_blank" 
+									rel="noopener noreferrer"
+									class="link tamanho_08em"
+								>
+								{% trans 'Terms of Service and Regulation' %}
+								</a>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-auto mx-2 p-0">
+								<a 
+									href="https://www.simoes.trd.br/privacidade" 
+									target="_blank" 
+									rel="noopener noreferrer"
+									class="link tamanho_07em"
+								>
+								{% trans 'Intellectual Property' %}
+								</a>
+							</div>
+							<strong class="sumir_mobile">/</strong>
+							<div class="col-md-auto mx-2 p-0">
+								<a 
+									href="https://www.simoes.trd.br/faq" 
+									target="_blank" 
+									rel="noopener noreferrer"
+									class="link tamanho_08em"
+								>
+								{% trans 'FAQ' %}
+								</a>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-auto mx-2 p-0">
+								<a 
+									href="https://www.simoes.trd.br/dir-autoral-prop-intelectual" 
+									target="_blank" 
+									rel="noopener noreferrer"
+									class="link tamanho_08em"
+								>
+								{% trans 'Privacy Policy' %}
+								</a>
+							</div>
+						</div>
+					
+					</div>
+
+					<div class="col-md-auto my-2 mx-auto p-0">
+						<section class="section_redes mx-auto">
+
+							<h5 class="text-center lead m-1"><strong> {% trans 'Social networks:' %} </strong></h5>
+							<div class="links_linha_horizontal my-2 bg-white"></div>
+							<div class="container my-2 p-0">
+								<div class="p-0 m-0 justify-content-center ">
+									<a class="redes_sociais" target= '_blank' href="http://facebook.simoes.trd.br">
+										<img
+											src= "{% static 'instantteste/img/facebook.png' %}"
+											alt="instant redes sociais link para o facebook" 
+											class="img-fluid m-0"
+										>
+									</a>
+									<a class="redes_sociais" target='_blank' href="http://instagram.simoes.trd.br">
+										<img
+											src= "{% static 'instantteste/img/instagram.png' %}"
+											alt="instant redes sociais link para o instagram" 
+											class="img-fluid m-0"
+										>
+									</a>
+									<a class="redes_sociais" target='_blank' href="http://linkedin.simoes.trd.br">
+										<img
+											src= "{% static 'instantteste/img/linkedin.png' %}"
+											alt="instant redes sociais link para o linkedin" 
+											class="img-fluid m-0"
+										>
+									</a>
+									<a class="redes_sociais" target='_blank' href="http://twitter.simoes.trd.br">
+										<img
+											src= "{% static 'instantteste/img/twitter.png' %}"
+											alt="instant redes sociais link para o twitter" 
+											class="img-fluid m-0"
+										>
+									</a>
+									<a class="redes_sociais" target ='_blank' href="http://canal.simoes.trd.br">
+										<img
+											src= "{% static 'instantteste/img/youtube.png' %}"
+											alt="instant redes sociais link para o youtube" 
+											class="img-fluid m-0"
+										>
+									</a>
+								</div>
+							</div>
+						</section>
+					</div>
+
+					<div class="col-md-auto my-2 mx-auto p-0">
+						<section id = 'contato' class="container">
+							<div class="container">
+								<div class="row">
+
+									<div class="col-md-auto mt-2 p-0 tam_footer_img" >
+										<img
+											src= "{% static 'instantteste/img/icone.png' %}"
+											alt="instant contatos"
+											class="img-contato"
+										>
+									</div>
+									<div class="col-md-auto mt-2 p-0 tam_footer_num">
+
+										<p class="d-inline h5 lead" ><strong> {% trans 'Contact:' %}</strong></p>
+										
+										<div class="links_linha_horizontal my-2 bg-white"></div>
+
+										<a
+											href="tel:+55 (21) 3185-8723"
+											class= "d-inline text-justify text-white lead mb-0"
+										>
+											<strong class="tamanho_08em">+55</strong> (21) 3185-8723
+										</a>
+
+									</div>
+
+								</div>
+							</div>
+
+						</section>
+					</div>
+
+					<div class="col-md-auto my-2 mx-auto p-0">
+						<section id = 'download' class="container p-0">
+
+							<a 
+								id = "Download_Apresentacao"
+								class="my-1" 
+								target= '_blank' 
+								href="http://apresentacao.simoes.trd.br/"
+							>
+								<p class = "text-white text-center">{% trans 'Download' %}</p>
+								<p class = "text-white text-center">{% trans 'Presentation' %}</p>
+								<p class = "text-center">
+									<img
+										src= "{% static 'instantteste/img/download.png' %}"
+										alt="instant download apresentação" 
+										class="img-fluid redes_sociais mx-auto"
+									>
+								</p>
+
+							</a>
+							
+						</section>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div id = "final_pagina" class="bg_grad_ciano">
+			<div class="col bg-white px-2 pt-1 m-0">
+				<p class = "text-center text-dark tamanho_08em">
+					{% trans 'Made with ' %}  <span class="text-danger">♥</span> {% trans ' in São João de Meriti, Rio de Janeiro. © 2020. All rights reserved.' %}  
+					<a class="text-dark m-0" href= "https://www.simoes.trd.br"> {% trans 'Simões Translation, Interpretation & Languages.' %}</a> 
+					CNPJ: 16.542.681/0001-50
+				</p>
+			</div>	
+		</div>
+	</footer>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+	<script
+		src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous">
+	</script>
+
+	<script 
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" 
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" 
+		crossorigin="anonymous">
+	</script>
+
+	<script 
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" 
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" 
+		crossorigin="anonymous">
+	</script>
+
+	<script>
+
+		$.when( $.ready ).then(function() {
+
+			let userLang = document.getElementsByTagName('html')[0].lang
+
+			$.ajax({
+				method: "GET",
+				url: '/locale_teste/ajax/aprentacao/download/' + userLang,
+				dataType: 'text',
+				success: function( data ) {
+
+					let Link_Download = document.getElementById('Download_Apresentacao')
+					//console.log(Link_Download)
+					//console.log('Funcionou')
+					//console.log(data)
+					Link_Download.href = data
+					//console.log(Link_Download)
+				},
+				processData: false,
+				contentType: false
+			});
+
+		});
+
+
+		$("#botao_busca").change( function Busca(event){
+
+			let dado = document.getElementById("botao_busca");
+			console.log(dado.value)
+			$.ajax({
+				method: "GET",
+				url: '/locale_teste/ajax/busca/' + dado.value,
+				dataType: 'text',
+				success: function( data ) {
+	
+					console.log(data)
+					console.log('Funcionou')
+
+				},
+				processData: false,
+				contentType: false
+			});
+		});
+		
+	</script>
+
+	{% block script %}
+			
+	{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,864 @@
+{% load static %}
+<html>
+	<head>
+		<title>Proposta</title>
+		<style> 
+			@font-face {
+				font-family: DilleniaUPC;
+				src: url("{% static 'font/upcdb.ttf' %}") format('truetype');
+			}
+			@font-face {
+				font-family: MyriadPro;
+				src: url("{% static 'font/myriadpro.ttf' %}") format('truetype');
+			} 
+			@page {
+				size: a4 portrait; 
+				margin: 0cm;
+			}
+
+			@page pagina2{
+				size: a4 portrait; 
+				margin-bottom:150px;
+				margin-top:150px;
+				background-image: url("{% static 'img/pagina.png' %}");
+			}
+
+			@page pagina3{
+				size: a4 portrait; 
+				margin-bottom:150px;
+				margin-top:150px;
+				background-image: url("{% static 'img/pagina.png' %}");
+			}
+
+			@page pagina4{
+				size: a4 portrait; 
+				margin-bottom:150px;
+				margin-top:150px;
+				background-image: url("{% static 'img/pagina.png' %}");
+			}
+
+			@page pagina5{
+				size: a4 portrait; 
+				margin-bottom:150px;
+				margin-top:150px;
+				background-image: url("{% static 'img/pagina.png' %}");
+			}
+
+			@page pagina6{
+				size: a4 portrait; 
+				margin-bottom:150px;
+				margin-top:150px;
+				background-image: url("{% static 'img/pagina.png' %}");
+			}
+
+			@page pagina7{
+				size: a4 portrait; 
+				margin-bottom:150px;
+				margin-top:150px;
+				background-image: url("{% static 'img/pagina.png' %}");
+			}
+			/* tamanho da pagina a4 595x842 */
+
+			h1.titulo{
+				position : relative; 
+				text-align: left; 
+				margin-top: 40px; 
+				margin-bottom: auto; 
+				margin-right: 40px; 
+				margin-left: 40px;  
+				font-family: DilleniaUPC; 
+				font-size: 35px;
+				font-weight: bold;
+			}
+			p{
+				font-family: MyriadPro; 
+				font-size: 15px; 
+				text-align: justify; 
+				text-justify: inter-word;
+				margin-top: auto;
+				margin-bottom: auto; 
+				margin-right: 50px; 
+				margin-left: 50px;
+			}
+
+			h6{
+				font-family: MyriadPro; 
+				font-size: 15px; 
+				margin-top: auto;
+				margin-bottom: auto; 
+				margin-right: 50px; 
+				margin-left: 50px;
+			}
+			.capa{ 
+				display: block; 
+				margin-top: 275px; 
+				margin-bottom: auto; 
+				margin-right: 300px; 
+				margin-left: 220px;  
+				width: 350px;
+			}
+			
+			.topo{ 
+				display: block; 
+				margin-top: 275pt; 
+				margin-bottom: auto; 
+				margin-right: 0pt; 
+				margin-left: 0pt;  
+				width: 600pt;
+				height: 90pt;
+			}
+
+			.capa_2{ 
+				display: block;  
+				margin-bottom: auto; 
+				margin-right: 300px; 
+				margin-left: 160px;  
+				width: 500px;
+			}
+			
+			.pg_2 { 
+				display: block;  
+				margin-bottom: auto; 
+				margin-left: 50pt;
+				margin-right: 100pt;  
+				width: 560pt;
+				height: 730pt;
+			}
+
+			.redes { 
+				display: block;  
+				margin-bottom: auto; 
+				margin-left: 25pt;
+			}
+
+			.local { 
+				display: block;  
+				margin-bottom: auto; 
+				margin-left: 50pt;
+				margin-right: 100pt;  
+				width: 300pt;
+				height: 100pt;
+			}
+
+			.rodape{  
+				display: flex;  
+				margin-bottom: auto; 
+				margin-top: 700pt;
+				padding-top: 500pt;
+				width: 600pt;
+				height: 150pt; 
+			}
+
+			.texto {
+				 
+				margin-right: 310pt;
+				margin-top: 200pt;  
+				height: 100pt;
+				width: 100pt;
+			}
+
+			.assinatura { 
+				display: block;  
+				margin-bottom: auto; 
+				margin-left: 310pt; 
+				margin-right: auto; 
+				width: 250pt;
+				height: 100pt;
+			}
+
+			.assinaturafinal { 
+				display: block;  
+				margin-bottom: auto; 
+				margin-left: 80pt; 
+				margin-right: auto; 
+				width: 150pt;
+				height: 50pt;
+			}
+			.texto1 {
+				 
+				margin-right: 310pt;
+				margin-top: 200pt;  
+				height: 100pt;
+				width: 100pt;
+			} 
+			
+
+			div.pg_3 { 
+				border-top-width: 10pt;
+				border-top-color: #000000;
+				border-top-style: solid;
+				border-bottom-style: solid;
+				border-bottom-width: 10pt;
+				border-bottom-color: #000000;
+				display: block;  
+				margin-bottom: auto; 
+				margin-left: 50pt;
+				margin-right: 100pt;  
+				width: 560pt;
+				height: 720pt;
+			}
+
+			p.esquerda {
+				margin-left: 400pt;
+			}
+
+			div.fixo, p.fixo{
+				white-space: pre;
+				text-align: justify;		
+
+			}
+
+			ul.razoes{
+				list-style-type: square;
+			}
+
+			/* tamanho da pagina a4 595x842 */
+			.inicio{
+				text-align: center; 
+			}
+
+			h1.tituloinicio{
+				position : relative; 
+				text-align: center; 
+				margin-top: 40px; 
+				margin-bottom: auto; 
+				margin-right: 40px; 
+				margin-left: 40px;  
+				font-family: DilleniaUPC; 
+				font-size: 35px;
+				font-weight: bold;
+			}
+
+			.mapa{
+				height: 170px;
+			}
+
+			.negrito{
+				text-align: center !important;  
+				font-family: DilleniaUPC;
+				font-size: 18pt; 
+				font-weight: bold;
+				margin-top: auto;
+				margin-bottom: auto; 
+				margin-right: 50px; 
+				margin-left: 50px;
+			}
+
+			.italico{
+				font-style: italic;
+				font-size: 15px;
+			}
+
+			table, td {
+				border: 0px solid whitesmoke;
+				margin-top: 1px;
+				margin-bottom: 1px; 
+				margin-right: 28px; 
+				margin-left: 28px;
+				padding-bottom: 5px;
+				padding-top: 5px;
+			}
+
+		</style>
+	</head>
+	<body> 
+		<pdf:nextpage>
+			<img src='{% static 'img/cabe.png' %}' alt='cabecalho'><br>
+			<img class = 'capa' src='{% static 'img/simoescapa.png' %}' alt='simoes'><br>
+			<h1 class = 'tituloinicio'>PROPOSTA TÉCNICO-COMERCIAL</h1>
+			<h1 class = 'tituloinicio'>INICIAL</h1>
+			<h3 class = 'titulo inicio'>Associada & Conveniada</h3>
+			<img class = 'capa_2' src='{% static 'img/associada.png' %}' alt='associada e convenio'><br>
+		</pdf:nextpage>
+		<pdf:nextpage>
+			<pdf:nexttemplate name="pagina2" />
+			<div id = 'pg2'>
+			</div>
+		</pdf:nextpage>
+		{% for servi in  itens%}
+			<pdf:nextpage>
+				<div class = 'pg3'>
+					
+					<p class = "esquerda">São João de Meriti, {{proposta.DataCadastro}}.</p>
+					<img src='{% static 'img/linha.png' %}' alt='simoes'><br>
+					<p>{{Partes.RazaoSocial}} - {{Partes.CNPJ}}</p>
+					<p>Aos cuidados do(a) Sr(a). {{Partes.NomeCompleto}}</p>
+					<p>
+						{{Partes.EnderecoNome}}, 
+						{{Partes.EnderecoNumero}},  
+						{{Partes.EnderecoComplemento}},  
+						{{Partes.EnderecoBairro}}, 
+					</p>
+					<p>
+						{{Partes.EnderecoCidade}},
+						{{Partes.UF}} – {{Partes.CEP}}
+					</p>
+					<img src='{% static 'img/linha.png' %}' alt='simoes'><br>
+
+					<p class="fixo">
+						Proposta Técnico-Comercialnº {{tempo}}-{{proposta.id}}
+
+						Prezado(a),
+						Segue a proposta técnico-comercial referente à prestação do(s) serviço(s) de
+						
+							{{servi.Tipo}},
+							{{servi.Categoria}}, {{servi.Codigo}},
+								{{servi.Nome}}
+						
+					</p>
+					<p>
+						Conforme solicitado, a Simões Tradução, Interpretação & Idiomas agradece seu interesse e se mantém à
+						disposição para esclarecer quaisquer  dúvidas relacionadas a esta apresentação por meio dos seguintes
+						canais  de  comunicação: no  menu contato  de  nosso site http://www.simoes.trd.br;  pelo telefone (21)
+						3185-8723;  ou, venha tomar  um  cafezinho diretamente em  nossa unidade (com agendamento prévio),
+						situada no endereço ao fim desta proposta.
+					</p>
+					<p class="fixo">
+						<br>
+						<br>
+					</p>
+					
+				</div>
+			</pdf:nextpage>
+		{% endfor %}
+
+		<pdf:nextpage>
+			<br>
+			<p>Atenciosamente,</p>
+			<img class = 'assinatura' src='{% static 'img/assinatura.png' %}' alt='simoes'><br>
+			<p class="fixo">
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+			</p>
+		</pdf:nextpage>
+		<pdf:nextpage>
+			
+			<h1 class = 'titulo'>1	Sobre a Simões</h1>
+			<img src='{% static 'img/linha.png' %}' alt='simoes'>
+			<p>
+				Fundada em 2012, somos uma empresa associada à Abrates (Associação Brasileira de Tradutores e 
+				Intérpretes – matrícula nº 2.932), à Rio CVB (Rio Convetion & Visitors Bureau), é certificada 
+				como prestadora de serviços turísticos pelo Cadastur (Cadastro de Prestadores de Serviços Turísticos 
+				do Ministério do Turismo) e possuímos convênio com a empresa especializada no ensino e aprendizagem 
+				de idiomas, onde oferecemos descontos em diversos títulos na livraria da Simões Tradução, Interpretação 
+				& Idiomas no site da SBS livraria Internacional e oferecemos soluções lingüísticas em diversos segmentos 
+				e contamos com uma base de profissionais altamente especializados.
+			</p>
+			<p>
+				Somos um provedor de serviços linguísticos (ou LSP - Language Service Provider) com exclusivos 
+				processos mapeados e orientados pela norma ABNT NBR 9001:2015 (Sistemas de gestão da qualidade), 
+				que reúne:
+			</p>	
+				
+			<p class="fixo">
+				•	um provedor de serviços de tradução (ou TSP - Translation Service Provider) 
+				com exclusivos processos mapeados e orientados pela norma ISO 17100:2015 
+				(Translation services - Requirements for translation services);
+				•	um provedor de serviços de interpretação (ou ISP - Interpreting Service Provider) 
+				com exclusivos processos mapeados e orientados pela norma ISO 13611:2014 (Interpreting 
+				- Guidelines for community interpreting);
+				•	um centro de cursos livres de línguas e qualificação profissional, baseados em 
+				nosso know-how.
+			</p>	
+			<img class = "mapa" src='{% static 'img/mapa.png' %}' alt='simoes'><br>
+			
+		</pdf:nextpage>
+		<pdf:nextpage>
+			
+			<p>
+				O significado de “Simões” é “aquele que ouve”, e sabemos que no mundo globalizado pessoas e empresas 
+				tomam decisões com base nas trocas que realizam entre si. É nesse mundo que a boa comunicação se torna 
+				a ferramenta mais poderosa. 
+			</p>		
+			<p>
+				Cada idioma tem uma série de particularidades, e, diante disso, buscamos garantir a fluidez do discurso, 
+				preservando o sentido da mensagem e permitindo, desta forma, qualidade na comunicação interpessoal.
+			</p>
+			<p class="fixo">
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+			</p>
+			
+		</pdf:nextpage>
+		<pdf:nextpage>
+			
+			<h1 class = 'titulo'>2	 NOSSA MISSÃO</h1>
+			<img src='{% static 'img/linha.png' %}' alt='simoes'>
+			<p>	
+				A missão de uma empresa é uma breve declaração de seu propósito, isto é, ela reflete o momento 
+				presente de forma a fundamentar os objetivos futuros. Não cabe à missão determinar as tarefas 
+				propriamente ditas do empreendimento, é preciso que esta seja concisa de forma a tornar-se um 
+				guia das estratégias internas e das ações externas. Ela deve refletir o objetivo principal segundo 
+				o qual o empreendimento de tradução foi criado. Nossa missão é:
+			</p>
+			<div class="negrito">
+				“Prover soluções linguísticas, através de profissionais criteriosamente selecionados a fim de 
+				oferecer um serviço ágil e de confiança ao cliente.”
+			</div>
+			
+			<h1 class = 'titulo'>3	NOSSA VISÃO</h1>
+			<img src='{% static 'img/linha.png' %}' alt='simoes'>
+			<p>
+				A visão de uma empresa tem a função de determinar um objetivo a ser alcançado a médio ou longo prazo, 
+				isto é, ela estabelece o ponto em que o empreendimento quer se encontrar no futuro. Para tal, foi 
+				estabelecido um período de dez anos em que o empreendimento deve medir se a visão está sendo cumprida ou não, 
+				para que ao final deste período esta seja alcançada. Portanto, como meta da Simões Tradução, Interpretação e 
+				Idiomas, foi definida a seguinte visão, de médio a longo prazo:
+			</p>
+			<div class="negrito">
+				“Alcançar o índice de 80% de clientes satisfeitos e promotores nos próximos dez anos, a fim de 
+				ser reconhecida como referência no mercado de serviços linguísticos. ”
+			</div>
+			<p>
+				<br>
+				<br>
+			</p>
+			
+		</pdf:nextpage>
+		<pdf:nextpage>
+			
+			<h1 class = 'titulo'>4	NOSSOS VALORES</h1>
+			<img src='{% static 'img/linha.png' %}' alt='simoes'>
+			<p>
+				A determinação dos valores da empresa tem como objetivo alinhar os preceitos segundo os quais a 
+				mesma foi estruturada, e que guiarão suas ações futuras e decisões estratégicas. Tendo isso em 
+				mente, foram determinados os valores abaixo:
+				<br>
+			</p>
+			<p>
+				<span class = 'negrito'>Desenvolvimento:</span>  Um negócio que busca o aprimoramento tecnológico continuamente.
+				<br>
+				<span class = 'negrito'>Especialização:</span>  Profissionais qualificados e selecionados criteriosamente.
+				<br>
+				<span class = 'negrito'>Confiança:</span>  Um negócio de postura responsável e segura com foco nos resultados.
+				<br>
+				<span class = 'negrito'>Pessoalidade:</span>  O contato e o tratamento pessoais e humanizados são prioridade sempre.
+			</p>
+			<p>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+			</p>
+			
+		</pdf:nextpage>
+		<pdf:nextpage>
+			
+			<h1 class = 'titulo'>5	VERTICAIS EM QUE ATUAMOS</h1>
+			<img src="{% static 'img/linha.png' %}" alt='simoes'>
+			<p>
+				Atuamos em 15 verticais, provendo serviços linguísticos especializados. Para os serviços de tradução 
+				e versão, podemos lançar mão da tecnologia de tradução assistida por computador, com base em memórias 
+				de tradução e bancos de dados terminológicos. Essa técnica é fundamental para as traduções técnicas, 
+				como é o caso das patentes, por exemplo, cuja redação técnica tem uma natureza extremamente padronizada 
+				e repetitiva. As verticais são as seguintes:
+			</p>
+			
+			<table>
+				<tr>
+					<td><span class="italico">Agronegócio</span></td>
+					<td><span class="italico">Humanidades</span></td>
+					<td><span class="italico">Engenharia & Exatas</span></td>
+				</tr>
+				<tr>
+					<td><span class="italico">Artística</span></td>
+					<td><span class="italico">Religioso</span></td>
+					<td><span class="italico">Esportes</span></td>
+				</tr>
+				<tr>
+					<td><span class="italico">Energia & Meio Ambiente</span></td>
+					<td><span class="italico">Turismo</span></td>
+					<td><span class="italico">Jurídico</span></td>
+				</tr>
+				<tr>
+					<td><span class="italico">Governamental</span></td>
+					<td><span class="italico">Computação</span></td>
+					<td><span class="italico">Médico & Saúde</span></td>
+				</tr>
+				<tr>
+					<td><span class="italico">Literária</span></td>
+					<td><span class="italico">Educação</span></td>
+					<td><span class="italico">Negócios</span></td>
+				</tr>
+			</table>		  
+			<h1 class = 'titulo'>6	RAZÕES PARA ESCOLHER A SIMÕES TRADUÇÃO, INTERPRETAÇÃO & IDIOMAS</h1>
+			<img src='{% static 'img/linha.png' %}' alt='simoes'>
+			<p>
+				•		O contato e o tratamento pessoais e humanizados são prioridade sempre, porque a valorização do 
+				ser humano é o principal pilar de suas práticas, afinal as empresas são feitas em primeiro lugar 
+				pelas pessoas.
+			</p>
+			<p>
+				•		Busca a cada dia o aperfeiçoamento tecnológico, por meio de ferramentas licenciadas e processos 
+				próprios, assim como incentiva a formação permanente de seus colaboradores.
+			</p>
+			<p>
+				•		A equipe de seu projeto será formada por profissionais altamente qualificados e selecionados 
+				criteriosamente, para garantir uma prestação de serviços de excelência e firmar-se como referência 
+				no mercado.
+			</p>
+			<p>
+				•		Tem postura responsável e segura com foco em resultados, para garantir projetos planejados, 
+				bem executados e no prazo estabelecido, visando sempre a melhor relação custo x benefício para 
+				seus clientes.
+			</p>
+			
+		</pdf:nextpage>
+		{% for servi in itens%}
+			<pdf:nextpage>
+				
+				<h1 class = 'titulo'>7	DESCRIÇÃO DO SERVIÇO</h1>
+				<img src='{% static 'img/linha.png' %}' alt='simoes'>
+				<p>
+					Seguem abaixo todas as entregas que serão contempladas no projeto, as atividades necessárias para completá-las, 
+					a descrição da forma de validação e o responsável pela mesma.
+				</p>
+				<p class="fixo">
+					{{servi.Tipo}},
+						{{servi.Categoria}}, {{servi.Codigo}},
+							SERVIÇO – CONTRATAÇÃO DE {{servi.Nome}}
+				</p>
+				
+				
+			</pdf:nextpage>
+			<pdf:nextpage>
+					
+				<p>
+					<br>
+					{{servi.Expli}}
+					<br>
+				</p>
+				
+			</pdf:nextpage>
+			<pdf:nextpage>
+				
+				<p>
+					<br>
+					{{servi.Mensagem}}
+				</p>	
+				<p><strong class = 'negrito'>Requisitos da Entrega</strong></p>
+				<p class="fixo">
+				•	Disponibilidade por e-mail ou telefone, nos horários de funcionamento da empresa,
+				como colaboradores designados pela empresa para contato;
+				•	Documentação existente que possa servir de base para realização do serviço;
+
+				</p>
+				<p>
+					<strong class = 'negrito'>
+						Composição da equipe para realização deste serviço
+					</strong>
+				</p>
+				<p>{{servi.Equipe}}</p>	
+				<p><strong class = 'negrito'>Informações Adicionais</strong></p>		
+				<p>{{servi.InfoAd}}</p> 
+				<p>
+					Após a realização da entrega, a mesma deverá ser validada por e-mail ou carta de validação pelo {{Partes.NomeCompleto}}.
+				</p>	
+				
+			</pdf:nextpage>
+		{% endfor %}
+		<pdf:nextpage>
+			
+			<h1 class = 'titulo'>8	FORMAS DE PAGAMENTO</h1>
+			<img src='{% static 'img/linha.png' %}' alt='simoes'>
+			<p>Vale ressaltar que já estão incluídos em nossos valores:</p>
+			<p class="fixo">
+				•	Custos com transporte, operação, montagem, desmontagem;
+				•	Equipe técnica operacional qualificada;
+				•	Custos com os equipamentos necessários para a realização da prestação dos serviços;
+				•	Taxas e impostos de qualquer natureza incidentes, direta ou indiretamente, sobre o 
+				objeto/serviço a ser contratado.
+			</p>
+			<p>	
+				Como consideramos, que clientes satisfeitos são a base para atestar nossa expertise e buscarmos 
+				ser referência no mercado de serviços  lingüísticos. Por isso, oferecemos aos nossos clientes 
+				reincidentes um desconto de 5% sobre o valor orçado para o projeto. 
+			</p>
+			<p><strong class = 'negrito'>8.1	Formas de Pagamento</strong></p>		
+			<p>
+				Quaisquer necessidades de alteração da data de pagamento prevista deverão ser discutidas com o 
+				departamento financeiro da Simões Tradução, Interpretação & Idiomas.
+				<br>
+				Os pagamentos deverão ser efetuados através de boletos bancários ou depósito bancários a serem 
+				realizadas no banco 237 – Bradesco – Agência: 0129-5 – Conta-corrente: 0236502-2.
+				<br>
+			</p>
+			<h1 class = 'titulo'>9	VALIDADE DA PROPOSTA</h1>
+			<img src='{% static 'img/linha.png' %}' alt='simoes'>
+			
+			<p>
+				A presente proposta tem validade de {{validade}} dias.
+				<br>
+				Para confirmar a aceitação dos preços e termos desta proposta, basta enviar um e-mail para info@simoes.trd.br 
+				durante o período de validade desta, indicando como assunto do e-mail a palavra Validação.
+				Desta forma daremos prosseguimento, lhe enviando a minuta do contrato para sua análise.
+			</p>
+			
+		</pdf:nextpage>
+		<pdf:nextpage>
+			
+			<h1 class = 'titulo'>10	COMUNICAÇÃO CLIENTE - SIMÕES TRADUÇÃO, INTERPRETAÇÃO & IDIOMAS</h1>
+			<img src='{% static 'img/linha.png' %}' alt='simoes'>
+			
+			<p>
+				Visando o melhor andamento do projeto e à contínua melhora na relação entre o contratante e a Simões Tradução, 
+				Interpretação & Idiomas, lhe disponibilizaremos um Ombudsman, que será o profissional responsável por monitorar a sua 
+				satisfação, estando apto a receber qualquer sugestão ou reclamação utilizando como canal de comunicação nosso site 
+				indicando como setor a opção Ouvidor(a) que é o nosso <strong class = 'negrito'>Ombudsman.</strong> 
+				<br>
+				O papel deste ouvidor está em receber e examinar sugestões, reclamações, elogios e denúncias de forma imparcial, 
+				guardando sigilo referente a informações levadas ao seu conhecimento, no exercício de suas funções. Possui a função 
+				de encaminhar aos setores competentes para apuração, as denúncias e reclamações, tão logo as mesmas sejam recebidas. 
+				Acompanhar as providências adotadas e garantir o retorno aos interessados, de forma a sugerir mudanças quando necessário 
+				e atuar na identificação de melhorias nos processos internos e garantia de alta performance de qualidade para todos os 
+				atendimentos da Simões Tradução, Interpretação & Idiomas.
+				<br>
+				Cabe ressaltar que esse contato não passa pelos membros da equipe, seja o Auxiliar Comercial, 
+				Supervisor de Equipe, profissionais de serviços lingüísticos alocados em seu projeto e demais colaboradores, 
+				sendo exclusivo entre o Auxiliar Comercial e do cliente.
+			</p>
+			<p>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+			</p>
+		
+		</pdf:nextpage>
+		<pdf:nextpage>
+			
+			<h1 class = 'titulo'>11	RESPONSABILIDADES</h1>
+			<img src='{% static 'img/linha.png' %}' alt='simoes'>
+			<p>
+				Para que se possa garantir um bom resultado no projeto, há a necessidade de que ambas 
+				as partes estejam dispostas a assumir os compromissos que serão citados a seguir.
+			</p>
+			<p>
+				11.1	Por parte da Simões Tradução, Interpretação & Idiomas
+			</p>
+			<p class="fixo">
+				•	A Simões Tradução, Interpretação & Idiomas compromete-se a elaborar e desenvolver todas 
+				as etapas supracitadas na presente proposta técnico-comercial, além de deixar seu Auxiliar 
+				Comercial disponível ao esclarecimento de dúvidas e a outras necessidades até a assinatura 
+				do termo de conclusão do serviço;
+				•	Quanto a prazo e condições de entrega, o serviço a ser fornecido pela Simões Tradução, 
+				Interpretação & Idiomas será entregue nos dias combinados e nos horários previstos 
+				conforme descrição no escopo do projeto. Em relação à rotina de execução, os intérpretes 
+				estarão presentes no local com, no mínimo, 1 (uma) hora de antecedência;
+				•	A Simões Tradução, Interpretação & Idiomas compromete-se a manter em sigilo todas 
+				as informações obtidas com o contratante ao longo do projeto.
+			</p>
+			
+		</pdf:nextpage>
+		<pdf:nextpage>
+			
+			<p>
+				11.2	Por parte do Contratante
+			</p>
+			<p class="fixo">
+				•	Caberá ao contratante fornecer todas as informações solicitadas e julgadas necessárias 
+				por parte do Auxiliar Comercial da Simões Tradução, Interpretação & Idiomas e disponibilizar 
+				responsáveis para as reuniões necessárias à realização deste projeto;
+				•	Encontra-se também inclusa na presente proposta, a autorização para utilização da logomarca 
+				e/ou do nome da empresa contratante em nosso material institucional, seja em textos 
+				destinados ao interno, seja em veiculações direcionadas ao público externo, mesmo após a 
+				finalização do projeto;
+				•	A equipe da Simões Tradução, Interpretação & Idiomas não poderá se responsabilizar pelos 
+				prazos de apresentação dos resultados, assim como pela qualidade do projeto, caso não sejam 
+				cumpridas as responsabilidades do contratante;
+				•	Caso o pagamento não seja efetuado no prazo de 10 dias após o vencimento, o projeto será 
+				suspenso até que o mesmo seja regularizado;
+				•	Caso o Auxiliar Comercial não consiga se comunicar com o contratante por 10 (dez) dias 
+				úteis, o projeto poderá ser cancelado, mediante vontade apenas da Simões Tradução, Interpretação 
+				& Idiomas, cabendo ao cliente o pagamento do realizado até a data de cancelamento;
+				•	Caso a validação ou a determinação específica dos ajustes se estenda por mais de 10 (dez) 
+				dias úteis, a etapa poderá ser considerada validada, mediante decisão da Simões Tradução, 
+				Interpretação & Idiomas;
+				•	Obrigatoriamente o responsável pela validação das entregas deve ser o contato da 
+				Simões Tradução, Interpretação & Idiomas com a empresa contratante.
+			</p>
+			<p>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+			</p>
+			
+		</pdf:nextpage>
+		<pdf:nextpage>
+			
+			<h1 class = 'titulo'>12	CLÁUSULAS ANEXAS</h1>
+			<img src='{% static 'img/linha.png' %}' alt='simoes'>
+			<p>
+				<br>
+				Em relação a prazos de execução, o projeto deverá estar concluído em, no máximo, (30 dias) após a contratação;
+				<br>
+				A presente contratação terá sua vigência até o final da execução do serviço;
+				<br>
+				O valor apresentado está sujeito a alterações e reajustes somente mediante extrapolação da carga horária 
+				previamente estabelecida nesta proposta;
+				<br>
+				A fiscalização dos serviços será feita pelo cliente, a cargo do chefe do setor, ou de seu substituto, 
+				ou de colaborador indicado, sem prejuízo das suas funções rotineiras;
+				<br>
+				Não se aplicam serviços de manutenção preventiva e/ou corretiva; 
+				Uma vez enviada proposta para o cliente e efetuado o pagamento, a efetivação da contratação estará 
+				condicionada à confirmação da equipe que executará o serviço; 
+				<br>
+				Caso a equipe não seja confirmada, será enviada nova proposta ao cliente, 
+				a quem será facultada a aceitação ou não na nova proposta; 
+				<br>
+				A não aceitação da nova proposta implicará na devolução do valor pago no prazo de 5 dias úteis; 
+				<br>
+				O cliente indica que leu e concordou com a versão mais recente dos termos de utilização do serviço 
+				e regulamento, através do endereço online http://www.simoes.trd.br, vinculando-se automaticamente às 
+				regras ali contidas.
+				<br>
+			</p>
+			<p>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+			</p>
+
+			
+		</pdf:nextpage>
+		<pdf:nextpage>
+			
+			<h1 class = 'titulo'>13	REDES SOCIAIS</h1>
+			<img src='{% static 'img/linha.png' %}' alt='simoes'>
+			<p><br></p>
+			<img class = "redes" src='{% static 'img/facebook.png' %}' alt='simoes'>
+			<p>http://facebook.simoes.trd.br</p>
+			<img class = "redes" src='{% static 'img/instagram.png' %}' alt='simoes'>
+			<p>http://instagram.simoes.trd.br</p>
+			<img class = "redes" src='{% static 'img/twitter.png' %}' alt='simoes'>
+			<p>http://twitter.simoes.trd.br</p>
+			<img class = "redes" src='{% static 'img/linkedin.png' %}' alt='simoes'>
+			<p>http://linkedin.simoes.trd.br</p>
+			<img class = "redes" src='{% static 'img/youtube.png' %}' alt='simoes'>
+			<p>http://canal.simoes.trd.br</p>
+			
+			
+		</pdf:nextpage>
+		<pdf:nextpage>
+			
+			<h1 class = 'titulo'>14	CONTATOS</h1>
+			<img src='{% static 'img/linha.png' %}' alt='simoes'>
+			<p><br></p>
+			<img class = "redes" src='{% static 'img/telefone.png' %}' alt='simoes'>
+			<p>+55 (21) 3185-8723 ramal 108</p>
+			<img class = "redes" src='{% static 'img/whatsapp.png' %}' alt='simoes'>
+			<p>+55 (21) 98493-5037</p>
+			<img class = "redes" src='{% static 'img/skype.png' %}' alt='simoes'>
+			<p>simoestraducao</p>
+			<img class = "redes" src='{% static 'img/email.png' %}' alt='simoes'>
+			<p>info@simoes.trd.br</p>
+			<img class = "redes" src='{% static 'img/site.png' %}' alt='simoes'>
+			<p>http://www.simoes.trd.br</p>
+			<img class = "redes" src='{% static 'img/local.png' %}' alt='simoes'>
+			<p>
+				Avenida Automóvel Clube, nº 2308, 1º andar, Vilar dos Teles, São João de Meriti, RJ, Brasil <br>
+				CEP: 25.565-172 <br>
+				http://unidadevilardosteles.simoes.trd.br 
+			</p>
+			
+		</pdf:nextpage>
+		<pdf:nextpage>
+			
+			<h1 class = 'titulo'>15	CONSIDERAÇÕES FINAIS</h1>
+			<img src='{% static 'img/linha.png' %}' alt='simoes'>
+			<p>
+				A presente proposta tem valor comercial e legal, sendo necessárias para a alteração dos prazos e valores
+				aqui expostos a apresentação formal de motivos e a concordância de ambas as partes. Assim sendo, quaisquer 
+				modificações deverão ser feitas mediante renegociação. Esta proposta é válida por 30 (trinta) dias após a data 
+				de entrega ao cliente, portanto estará sujeita a alterações ao final deste prazo.
+			</p>
+			<p>
+				De acordo com os termos da presente proposta,
+			</p>
+			<p class="fixo">
+				
+				<img 
+					src='{% static 'img/assinaturaana.png' %}' class = 'assinaturafinal' alt='simoes'>					        											_____________________________________
+				Ana Paula dos Santos Suárez Alves da Silva			{{Partes.NomeCompleto}}		
+				Habilitação nº 02221877159 						   RG nº {{Partes.RG}}
+				CPF/MF nº 073.408.087-52							CPF/MF nº {{Partes.CPF}}
+			</p>
+			<p>
+				TESTEMUNHAS:
+			</p>
+			<p class="fixo">
+
+					___________________________________
+					Vanessa Simões Moreira de Albuquerque
+					Identidade nº 10.945.532-9
+					CPF/MF nº 072.456.317-27
+			</p>
+			<p>
+				<br>
+				<br>
+				<br>
+				<br>
+			</p>
+			
+		</pdf:nextpage>
+	</body>
+</html>

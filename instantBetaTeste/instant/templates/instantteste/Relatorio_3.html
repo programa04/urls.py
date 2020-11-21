@@ -1,0 +1,51 @@
+{% extends "RelatorioBase.html" %}
+{% load static %}
+{% block head %}
+	<style type="text/css">
+
+		body {
+			background-color : #FF00FF;
+			color : white;
+		}
+
+	</style>
+{% endblock %}
+{% block content %}
+	<div 
+	class="Relatorio3"
+	>
+		<section>
+			<h1>Relatório de Diagnóstico para <strong>{{relatorio_tipo}}</strong></h1>
+			<form method="POST" action= "" >
+				{% csrf_token %}
+				<input type="hidden" name= "TipodeServico" value="{{relatorio_tipo}}">
+				
+				<input type="hidden" name="IdProposta" value="{{idpedido}}">
+				
+				{{ form.as_p }}
+
+				{% if form.errors %}
+					{% for field in form %}
+						{% for error in field.errors %}
+							<div class="alert alert-danger">
+								<strong>{{ error|escape }}</strong>
+							</div>
+						{% endfor %}
+					{% endfor %}
+					{% for error in form.non_field_errors %}
+						<div class="alert alert-danger">
+							<strong>{{ error|escape }}</strong>
+						</div>
+					{% endfor %}
+				{% endif %}
+				
+				<br>
+				<br>
+				<button class="btn btn-info"  type="submit"> Guardar</button>
+				<br>
+			
+			</form>
+
+		</section>			
+	</div>
+{% endblock %}
