@@ -17,9 +17,10 @@
 				<form class="form-signin mx-auto text-center avalidar" method="POST" action="">
 					{% csrf_token %}
                         <div class="row">
-                            <div class="col-3">
+
+                            <div class="col-2">
                                 <div>
-                                <label style="">Pronome</label>
+                                <label style="text-align: left">Pronome</label>
                                     <select id="PronSelect" class="form-control" name="TipoPronomeTratamento">
                                         {% for dado in tipopron %}
                                             <option value="{{ dado.id }}">{{ dado.Nome }}</option>
@@ -32,18 +33,17 @@
                                 {% render_field users.first_name style=style %}
                             </div>
 
-                            <div class="col-5">
+                            <div class="col-4">
                                 {% render_field users.last_name style=style %}
                             </div>
+							<div class="col-2">
+                            	{% render_field parte.Iniciais style=style %}
+							</div>
 					</div>
                     <div class="row">
 
-                        <div class="col-2">
-                            {% render_field parte.Iniciais style=style %}
-                        </div>
-
-                   <div class='col-10'>
-                    <label>País</label>
+                   <div class='col'>
+                    <label style="text-align: left">País</label>
                         <select class="form-control" name="Pais">
                             <option value="" selected disabled>Selecionar...</option>
                             {% for dado in pais %}
@@ -51,10 +51,11 @@
                             {% endfor %}
 						</select>
                     </div>
-                    </div>
-                    <div class="">
+						<div class="col">
                        {% render_field parte.DataNascimento style=style %}
                     </div>
+                    </div>
+
 
 					<div class="row" id="id_alerta">
 						<div class="col-8">
@@ -73,13 +74,19 @@
 					</div>
 
 					<div class="row">
-						<div class="col my-auto">
-							{% render_field contato.CodigoDiscagemInternacional style=style %}
-						</div>
 						<div class="col">
                             <div class="row">
+								<div class="col-3">
+									{% render_field contato.CodigoDiscagemInternacional style=style %}
+								</div>
                                 <div class="col">
-                                    {% render_field contato.TipoContato style=style %}
+                                       <label>Tipo de Contato</label>
+                                    <select class="form-control" style="width: 465px"  name="TipoContato">
+                                        <option value="" selected disabled>Selecionar...</option>
+                                        {% for dado in tipocontato %}
+                                            <option value="{{ dado.id }}">{{ dado.Nome }}</option>
+                                        {% endfor %}
+                                    </select>
                                 </div>
                                 <div class="col">
                                     {% render_field contato.Identificacao style=style %}
@@ -101,16 +108,10 @@
                             </div>
 						</div>
 
-                        <div class="col my-auto">
-                            {% render_field contato.Principal style=style %}
-						</div>
-
-                        <div class="col my-auto">
-                            {% render_field contato.NaoExibirContato style=style %}
-						</div>
-
 					</div>
+						<div class="row">
 
+						</div>
 					<div class="row my-2 mx-2">
 						<div class="d-flex col align-items-center">
                             <label >{% trans 'What is your biological sex?' %}</label>
