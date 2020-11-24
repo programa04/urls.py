@@ -197,6 +197,7 @@ class CadastroView(APIView):
 		QueryTipoPron = TipoPronomeTratamento.objects.filter(LanguageCode = LCid).order_by('Ordem')
 		QueryTipoSexo = TipoSexo.objects.filter(LanguageCode = LCid).order_by('Ordem')
 		QueryTipoOp = TipoOpTelefonia.objects.filter(LanguageCode = LCid).order_by('Ordem')
+		QueryTipoContato = TipoContato.objects.filter(LanguageCode = LCid, TipoContatoTecn_id = 1).order_by('Ordem')
 		QueryBancoImagem = QueryPais.values("BancoImagem__Arquivo","BancoImagem__id")
 		QueryTipoId = TipoIdentificacao.objects.filter(CodigoIDezoitoN = 700, LanguageCode = LCid).order_by('Ordem')
 		muda = MudaContext()
@@ -209,11 +210,12 @@ class CadastroView(APIView):
 			'tiposexo': QueryTipoSexo.values(),
 			'tipoop': QueryTipoOp.values(),
 			'tipoid': QueryTipoId.values(),
+			'tipocontato': QueryTipoContato.values(),
 			'contato': contato,
 			'seguranca': seguranca,
 			'pais': QueryPais.values(),
 			'paisimagens': QueryBancoImagem,
-			'Bandeiras': muda.Trocar(request),
+			#'Bandeiras': muda.Trocar(request),
 			'style': self.style
 		}
 		return context
