@@ -1378,7 +1378,7 @@ class Contato(models.Model):
 		blank = True,
 		default = None,
 		max_length = 250,
-		verbose_name = "Identificação"
+		verbose_name = "Número"
 	)
 
 	Ramal = models.CharField(
